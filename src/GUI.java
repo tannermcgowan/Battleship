@@ -82,7 +82,6 @@ public class GUI extends JFrame implements ActionListener{
 
 		
 		setVisible(true);
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
 
 	}
