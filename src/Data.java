@@ -1,10 +1,38 @@
 public class Data {
 	
-	/*
-	 * This class should be where all the information is kept. It should have a ship placing se of methods, a fire
-	 * method, a receive hit method, a method that marks the players radar, a method that keeps score that can be
-	 * elaborated on in gui,and a method that tells who won. 
-	 */
+
+	private boolean playerTurn = true; //If true, then it is the players turn, if false it is the CPU
+	private int numberOfShotsFired = 0;
+	private int numberOfShotsThatHit = 0;
+	private int accuracy = 0;
+	private int numberOfCPUSHipsLeft = 5;
+	private int numberOfPlayerShipsLeft = 5;
+	private String accuracyForTheScoreboard;
+	private String numberOfShotsFiredForTheScoreboard;
+	private String numberOfShotsThatHitForTheScoreboard;
+	private String numberOfCPUSHipsLeftForTheScoreboard;
+	private String numberOfPlayerShipsLeftForTheScoreboard;
+	
+	
+	
+	public boolean checkForWin(){
+		return false;
+	}
+	
+	public void fireMissile(){
+		//this is the method to fire onto the radar
+	}
+	
+	public void updateStats(){
+		//this will update the stats on the top and bottom
+		accuracy = numberOfShotsFired / numberOfShotsThatHit;
+		 
+		accuracyForTheScoreboard = "Your Accuracy Is " + accuracy;
+		
+	}
+	
+	
+	
 	
 	public static void main(String[] args){
 		

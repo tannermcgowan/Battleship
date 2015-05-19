@@ -1,5 +1,9 @@
 
 import java.awt.Color;
+
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,9 +20,9 @@ public class GUI extends JFrame implements ActionListener{
 	JButton bTest3 = new JButton("");
 	
 	public GUI(){
-		super();
 		
-
+		super();
+		//getContentPane().setBackground(new Color(51,255,255) );
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
 		setSize(360,700);
 		setResizable(false);
@@ -26,10 +30,10 @@ public class GUI extends JFrame implements ActionListener{
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		JPanel jp1 = new JPanel();
 		add(jp1);
-		
 		jp1.add(bTest1);
 		jp1.add(bTest2);
 		jp1.add(bTest3);
+
 	}
 	
 	public void actionPerformed(ActionEvent e) {
