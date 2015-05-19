@@ -1,4 +1,5 @@
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,25 +12,54 @@ import javax.swing.JPanel;
 
 public class GUI extends JFrame implements ActionListener{
 	
-	JButton bTest1 = new JButton("");
-	JButton bTest2 = new JButton("");
-	JButton bTest3 = new JButton("");
+	public int[][] radarGrid = new int [10][10];
 	
 	public GUI(){
 		super();
 		
 
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
-		setSize(360,700);
+		setSize(500,740);
 		setResizable(false);
-		setVisible(true);
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		JPanel jp1 = new JPanel();
-		add(jp1);
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
+		JPanel topPanel = new JPanel();
+		JPanel bottomPanel = new JPanel();
+		JPanel radarPanel = new JPanel();
+		topPanel.setLayout(new BorderLayout());
+		bottomPanel.setLayout(new BorderLayout());
 		
-		jp1.add(bTest1);
-		jp1.add(bTest2);
-		jp1.add(bTest3);
+		topPanel.add(new JButton("North"), BorderLayout.NORTH);
+		topPanel.add(new JButton("South"), BorderLayout.SOUTH);
+		topPanel.add(new JButton("East"), BorderLayout.EAST);
+		topPanel.add(new JButton("West"), BorderLayout.WEST);
+		topPanel.add(radarPanel, BorderLayout.CENTER);
+		
+		int x = 0;
+		int y = 0;
+		
+		while( x < 10){
+			while(y < 10){
+				System.out.println(x + " , " + y);
+				radarPanel.add(new JButton(""), BorderLayout.CENTER);
+				y++;
+			}
+			x++;
+			y=0;
+		}
+		
+		bottomPanel.add(new JButton("North"), BorderLayout.NORTH);
+		bottomPanel.add(new JButton("South"), BorderLayout.SOUTH);
+		bottomPanel.add(new JButton("East"), BorderLayout.EAST);
+		bottomPanel.add(new JButton("West"), BorderLayout.WEST);
+		bottomPanel.add(new JButton("Center"), BorderLayout.CENTER);
+		
+		
+		add(radarPanel);
+		add(bottomPanel);
+
+		
+		setVisible(true);
+
 	}
 	
 	public void actionPerformed(ActionEvent e) {
