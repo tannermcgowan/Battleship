@@ -1,6 +1,10 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,9 +19,9 @@ public class GUI extends JFrame implements ActionListener{
 	public int[][] radarGrid = new int [10][10];
 	
 	public GUI(){
-		super();
 		
-
+		super();
+		//getContentPane().setBackground(new Color(51,255,255) );
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
 		setSize(500,740);
 		setResizable(false);
@@ -25,6 +29,7 @@ public class GUI extends JFrame implements ActionListener{
 		JPanel topPanel = new JPanel();
 		JPanel bottomPanel = new JPanel();
 		JPanel radarPanel = new JPanel();
+		JPanel oceanPanel = new JPanel();
 		topPanel.setLayout(new BorderLayout());
 		bottomPanel.setLayout(new BorderLayout());
 		
@@ -33,6 +38,8 @@ public class GUI extends JFrame implements ActionListener{
 		topPanel.add(new JButton("East"), BorderLayout.EAST);
 		topPanel.add(new JButton("West"), BorderLayout.WEST);
 		topPanel.add(radarPanel, BorderLayout.CENTER);
+		
+		radarPanel.setLayout(new GridLayout(10,10));
 		
 		int x = 0;
 		int y = 0;
@@ -51,14 +58,32 @@ public class GUI extends JFrame implements ActionListener{
 		bottomPanel.add(new JButton("South"), BorderLayout.SOUTH);
 		bottomPanel.add(new JButton("East"), BorderLayout.EAST);
 		bottomPanel.add(new JButton("West"), BorderLayout.WEST);
-		bottomPanel.add(new JButton("Center"), BorderLayout.CENTER);
+		bottomPanel.add(oceanPanel, BorderLayout.CENTER);
+		
+		oceanPanel.setLayout(new GridLayout(10,10));
+		
+		x = 0;
+		y = 0;
+		
+		while( x < 10){
+			while(y < 10){
+				System.out.println(x + " , " + y);
+				oceanPanel.add(new JButton(""), BorderLayout.CENTER);
+				y++;
+			}
+			x++;
+			y=0;
+		}
 		
 		
-		add(radarPanel);
+		add(topPanel);
+		//add(radarPanel);
 		add(bottomPanel);
 
 		
 		setVisible(true);
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		
 
 	}
 	
@@ -68,8 +93,7 @@ public class GUI extends JFrame implements ActionListener{
 	
 	public static void main(String[] args){
 		GUI gui = new GUI();
-		//setLayout(new BoxLayout(gui, BoxLayout.PAGE_AXIS));
-		//gui.setLayout(new BoxLayout(gui, BoxLayout.PAGE_AXIS));
+		
 	}
 
 }
