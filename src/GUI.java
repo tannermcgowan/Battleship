@@ -21,8 +21,12 @@ public class GUI extends JFrame implements ActionListener{
 	
 	public JButton[][] oceanGrid = new JButton [10][10];
 	public boolean placingBoats = true;
+	public boolean isHorizontal = true;
 	public int curBoat = 0;
 
+	
+	JButton bottomNorth = new JButton("Placing: Horizontal");
+	JLabel topEast = new JLabel ("");
 	
 	public GUI(){
 		
@@ -40,9 +44,9 @@ public class GUI extends JFrame implements ActionListener{
 		bottomPanel.setLayout(new BorderLayout());
 		
 		
-		JButton bottomNorth = new JButton("Placing: Horizontal");
-		JLabel topEast = new JLabel ("");
 		
+		
+		bottomNorth.setActionCommand("flipHorizontal");
 		
 		topPanel.add(new JButton(" "), BorderLayout.NORTH);
 		topPanel.add(new JButton(" "), BorderLayout.SOUTH);
@@ -128,6 +132,17 @@ public class GUI extends JFrame implements ActionListener{
 
 		System.out.println(e.getActionCommand());
 		
+		if(e.getActionCommand() == "flipHorizontal"){
+			if(isHorizontal){
+				isHorizontal = false;
+				bottomNorth.setText("Placing: Vertical");
+			}
+			else{
+				isHorizontal = true;
+				bottomNorth.setText("Placing: Horizontal");
+			}
+		}
+		
 		if(placingBoats == true){
 			
 			int xCoord = Integer.parseInt(e.getActionCommand().toString().charAt(0) + "");
@@ -136,7 +151,22 @@ public class GUI extends JFrame implements ActionListener{
 			
 			if(curBoat == 0){
 				System.out.println(xCoord);
-					oceanGrid[xCoord][yCoord].setBackground(Color.BLUE);
+				oceanGrid[xCoord][yCoord].setBackground(Color.BLUE);
+				oceanGrid[xCoord][yCoord].setForeground(Color.BLUE);
+				oceanGrid[xCoord][yCoord].setOpaque(true);
+				
+					if(isHorizontal){
+						oceanGrid[xCoord][yCoord + 1].setBackground(Color.BLUE);
+						oceanGrid[xCoord][yCoord + 1].setForeground(Color.BLUE);
+						oceanGrid[xCoord][yCoord + 1].setOpaque(true);
+
+					}
+					if(!isHorizontal){
+						oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
+						oceanGrid[xCoord + 1][yCoord].setForeground(Color.BLUE);
+						oceanGrid[xCoord + 1][yCoord].setOpaque(true);
+					}
+					
 			}
 			
 			
