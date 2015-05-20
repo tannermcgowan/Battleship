@@ -45,7 +45,7 @@ public class GUI extends JFrame implements ActionListener{
 		
 		
 		
-		
+		bottomNorth.addActionListener(this);
 		bottomNorth.setActionCommand("flipHorizontal");
 		
 		topPanel.add(new JButton(" "), BorderLayout.NORTH);
@@ -142,34 +142,36 @@ public class GUI extends JFrame implements ActionListener{
 				bottomNorth.setText("Placing: Horizontal");
 			}
 		}
+		else{ 
+			if(placingBoats == true){
 		
-		if(placingBoats == true){
-			
-			int xCoord = Integer.parseInt(e.getActionCommand().toString().charAt(0) + "");
-			int yCoord = Integer.parseInt(e.getActionCommand().toString().charAt(1) + "");
-			
-			
-			if(curBoat == 0){
-				System.out.println(xCoord);
-				oceanGrid[xCoord][yCoord].setBackground(Color.BLUE);
-				oceanGrid[xCoord][yCoord].setForeground(Color.BLUE);
-				oceanGrid[xCoord][yCoord].setOpaque(true);
 				
-					if(isHorizontal){
-						oceanGrid[xCoord][yCoord + 1].setBackground(Color.BLUE);
-						oceanGrid[xCoord][yCoord + 1].setForeground(Color.BLUE);
-						oceanGrid[xCoord][yCoord + 1].setOpaque(true);
-
-					}
-					if(!isHorizontal){
-						oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
-						oceanGrid[xCoord + 1][yCoord].setForeground(Color.BLUE);
-						oceanGrid[xCoord + 1][yCoord].setOpaque(true);
-					}
-					
+				int xCoord = Integer.parseInt(e.getActionCommand().toString().charAt(0) + "");
+				int yCoord = Integer.parseInt(e.getActionCommand().toString().charAt(1) + "");
+				
+				
+				if(curBoat == 0){ // 2-Boat
+					System.out.println(xCoord);
+					if(	(isHorizontal && (yCoord < 9))	|| (!isHorizontal && (xCoord < 9))	){
+						oceanGrid[xCoord][yCoord].setBackground(Color.BLUE);
+						oceanGrid[xCoord][yCoord].setForeground(Color.BLUE);
+						oceanGrid[xCoord][yCoord].setOpaque(true);
+							if(isHorizontal){
+								oceanGrid[xCoord][yCoord + 1].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 1].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 1].setOpaque(true);
+							}
+							if(!isHorizontal){
+								oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 1][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 1][yCoord].setOpaque(true);
+							}
+						//curBoat ++;
+					}	
+				}
+			
+			
 			}
-			
-			
 		}
 
 	}
