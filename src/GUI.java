@@ -119,8 +119,9 @@ public class GUI extends JFrame implements ActionListener{
 		
 		if(e.getActionCommand().equals("00")){
 			System.out.println("ASD");
-			oceanGrid[0][0].setBackground(Color.GREEN);
-
+			oceanGrid[0][0].setForeground(new Color(255,255,255));
+			oceanGrid[0][0].setBackground(new Color(122,245,0));
+			oceanGrid[0][0].setOpaque(true);
 		}
 		
 	}
