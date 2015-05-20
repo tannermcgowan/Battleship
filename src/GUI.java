@@ -1,22 +1,24 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridLayout;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 public class GUI extends JFrame implements ActionListener{
 	
-	public int[][] radarGrid = new int [10][10];
+	public JButton[][] oceanGrid = new JButton [10][10];
 	
 	public GUI(){
 		
@@ -43,11 +45,18 @@ public class GUI extends JFrame implements ActionListener{
 		
 		int x = 0;
 		int y = 0;
+		JButton b;
 		
 		while( x < 10){
 			while(y < 10){
 				System.out.println(x + " , " + y);
-				radarPanel.add(new JButton(""), BorderLayout.CENTER);
+				b = new JButton("");
+				
+				b.setBorder(BorderFactory.createRaisedBevelBorder());
+				
+				radarPanel.add(b, BorderLayout.CENTER);
+				b.addActionListener(this);
+				b.setActionCommand("r" + x + "" + y);
 				y++;
 			}
 			x++;
@@ -68,12 +77,22 @@ public class GUI extends JFrame implements ActionListener{
 		while( x < 10){
 			while(y < 10){
 				System.out.println(x + " , " + y);
-				oceanPanel.add(new JButton(""), BorderLayout.CENTER);
+				b = new JButton("");
+				oceanGrid[x][y] = b;
+				
+				b.setBorder(BorderFactory.createRaisedBevelBorder());
+				
+				oceanPanel.add(b, BorderLayout.CENTER);
+				b.addActionListener(this);
+				b.setActionCommand(x+ "" + y);
 				y++;
+
 			}
 			x++;
 			y=0;
 		}
+		
+		
 		
 		
 		add(topPanel);
@@ -86,13 +105,30 @@ public class GUI extends JFrame implements ActionListener{
 
 	}
 	
-	public void actionPerformed(ActionEvent e) {
-		
-	}
 	
 	public static void main(String[] args){
 		GUI gui = new GUI();
 		
 	}
+
+
+	
+	public void actionPerformed(ActionEvent e) {
+
+		System.out.println(e.getActionCommand());
+		
+		if(e.getActionCommand().equals("00")){
+			System.out.println("ASD");
+			oceanGrid[0][0].setBackground(Color.GREEN);
+
+		}
+		
+	}
+
+	
+	
+	
+	
+	
 
 }
