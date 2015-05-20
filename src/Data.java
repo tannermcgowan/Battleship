@@ -50,6 +50,7 @@ public class Data {
 		//this is the method where the player fires a missile. Should show up
 		numberOfShotsFired++;
 		updateStats();
+		//we decided we would return a string of 2 numbers, which we can then split and use as coordinates
 		return "00";
 	}
 	
@@ -57,6 +58,7 @@ public class Data {
 	public String CPUFireMissile(){
 		//This will be the method where the CPU fires a missile.. If it hits it should fire at the surrounding 8 spaces
 		updateStats();
+		//we decided we would return a string of 2 numbers, which we can then split and use as coordinates
 		return "00";
 	}
 	
