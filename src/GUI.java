@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -19,6 +20,9 @@ import javax.swing.event.ChangeListener;
 public class GUI extends JFrame implements ActionListener{
 	
 	public JButton[][] oceanGrid = new JButton [10][10];
+	public boolean placingBoats = true;
+	public int curBoat = 0;
+
 	
 	public GUI(){
 		
@@ -35,10 +39,15 @@ public class GUI extends JFrame implements ActionListener{
 		topPanel.setLayout(new BorderLayout());
 		bottomPanel.setLayout(new BorderLayout());
 		
-		topPanel.add(new JButton("North"), BorderLayout.NORTH);
-		topPanel.add(new JButton("South"), BorderLayout.SOUTH);
-		topPanel.add(new JButton("East"), BorderLayout.EAST);
-		topPanel.add(new JButton("West"), BorderLayout.WEST);
+		
+		JButton bottomNorth = new JButton("Placing: Horizontal");
+		JLabel topEast = new JLabel ("");
+		
+		
+		topPanel.add(new JButton(" "), BorderLayout.NORTH);
+		topPanel.add(new JButton(" "), BorderLayout.SOUTH);
+		topPanel.add(topEast, BorderLayout.EAST);
+		topPanel.add(new JButton("    "), BorderLayout.WEST);
 		topPanel.add(radarPanel, BorderLayout.CENTER);
 		
 		radarPanel.setLayout(new GridLayout(10,10));
@@ -63,10 +72,12 @@ public class GUI extends JFrame implements ActionListener{
 			y=0;
 		}
 		
-		bottomPanel.add(new JButton("North"), BorderLayout.NORTH);
-		bottomPanel.add(new JButton("South"), BorderLayout.SOUTH);
-		bottomPanel.add(new JButton("East"), BorderLayout.EAST);
-		bottomPanel.add(new JButton("West"), BorderLayout.WEST);
+		
+		
+		bottomPanel.add(bottomNorth, BorderLayout.NORTH);
+		bottomPanel.add(new JButton(""), BorderLayout.SOUTH);
+		bottomPanel.add(new JButton("    "), BorderLayout.EAST);
+		bottomPanel.add(new JButton("    "), BorderLayout.WEST);
 		bottomPanel.add(oceanPanel, BorderLayout.CENTER);
 		
 		oceanPanel.setLayout(new GridLayout(10,10));
@@ -117,13 +128,20 @@ public class GUI extends JFrame implements ActionListener{
 
 		System.out.println(e.getActionCommand());
 		
-		if(e.getActionCommand().equals("00")){
-			System.out.println("ASD");
-			oceanGrid[0][0].setForeground(new Color(255,255,255));
-			oceanGrid[0][0].setBackground(new Color(122,245,0));
-			oceanGrid[0][0].setOpaque(true);
+		if(placingBoats == true){
+			
+			int xCoord = Integer.parseInt(e.getActionCommand().toString().charAt(0) + "");
+			int yCoord = Integer.parseInt(e.getActionCommand().toString().charAt(1) + "");
+			
+			
+			if(curBoat == 0){
+				System.out.println(xCoord);
+					oceanGrid[xCoord][yCoord].setBackground(Color.BLUE);
+			}
+			
+			
 		}
-		
+
 	}
 
 	
