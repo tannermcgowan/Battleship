@@ -24,10 +24,19 @@ public class Data {
 	}
 	
 	public void updateStats(){
-		//this will update the stats on the top and bottom
+		//this will update the stats
+		
 		accuracy = numberOfShotsFired / numberOfShotsThatHit;
 		 
-		accuracyForTheScoreboard = "Your Accuracy Is " + accuracy;
+		accuracyForTheScoreboard = "Your Accuracy Is " + accuracy*100 + "%";
+		
+		numberOfShotsFiredForTheScoreboard = "You have fired " + numberOfShotsFired + " shots";
+		
+		numberOfShotsThatHitForTheScoreboard = "You have hit an enemy boat " + numberOfShotsThatHit + " times";
+		
+		numberOfCPUSHipsLeftForTheScoreboard = "The enemy has " + numberOfCPUSHipsLeft +  " ships left";
+		
+		numberOfPlayerShipsLeftForTheScoreboard = "The enemy has sunken " + (5 - numberOfPlayerShipsLeft) + " of your ships";
 		
 	}
 	
