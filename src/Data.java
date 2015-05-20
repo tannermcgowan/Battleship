@@ -1,27 +1,22 @@
+import javax.swing.JButton;
+
 public class Data {
 	
 
-	private boolean playerTurn = true; //If true, then it is the players turn, if false it is the CPU
-	private int numberOfShotsFired = 0;
-	private int numberOfShotsThatHit = 0;
-	private int accuracy = 0;
-	private int numberOfCPUSHipsLeft = 5;
-	private int numberOfPlayerShipsLeft = 5;
-	private String accuracyForTheScoreboard;
-	private String numberOfShotsFiredForTheScoreboard;
-	private String numberOfShotsThatHitForTheScoreboard;
-	private String numberOfCPUSHipsLeftForTheScoreboard;
-	private String numberOfPlayerShipsLeftForTheScoreboard;
+	boolean playerTurn = true; //If true, then it is the players turn, if false it is the CPU
+	int numberOfShotsFired = 0;
+	int numberOfShotsThatHit = 0;
+	int accuracy = 0;
+	int numberOfCPUSHipsLeft = 5;
+	int numberOfPlayerShipsLeft = 5;
+	String accuracyForTheScoreboard;
+	String numberOfShotsFiredForTheScoreboard;
+	String numberOfShotsThatHitForTheScoreboard;
+	String numberOfCPUSHipsLeftForTheScoreboard;
+	String numberOfPlayerShipsLeftForTheScoreboard;
+	int[][] CPUGrid = new int [10][10];
 	
 	
-	
-	public boolean checkForWin(){
-		return false;
-	}
-	
-	public void fireMissile(){
-		//this is the method to fire onto the radar
-	}
 	
 	public void updateStats(){
 		//this will update the stats
@@ -41,6 +36,47 @@ public class Data {
 	}
 	
 	
+	
+	public boolean checkForWin(){
+		updateStats();
+		return false;
+	}
+	
+	
+	public void playerFireMissile(){
+		//this is the method where the player fires a missile. Should show up
+		numberOfShotsFired++;
+		updateStats();
+	}
+	
+	
+	public void CPUFireMissile(){
+		//This will be the method where the CPU fires a missile.. If it hits it should fire at the surrounding 8 spaces
+		updateStats();
+	}
+	
+	public void CPUTakeHit(){
+		//this will be the method that scores the data when the CPU bopat takes a hit
+		numberOfShotsThatHit++;
+		updateStats();
+	}
+	
+	public void CPUGetSunk(){
+		//this is the method where the CPU gets a boat sunken
+		numberOfCPUSHipsLeft--;
+		updateStats();
+	}
+	
+	public void playerGetSunk(){
+		//this is the method where the player loses a ship, and the buttons all turn red
+		numberOfPlayerShipsLeft--;
+		updateStats();
+	}
+	
+	public void playerTakeHit(){
+		//this method is where the JButton that was hit turns red, and stores the data that it was hit
+		updateStats();
+	}
 	
 	
 	public static void main(String[] args){
