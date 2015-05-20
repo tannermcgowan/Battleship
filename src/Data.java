@@ -15,7 +15,7 @@ public class Data {
 	String numberOfCPUSHipsLeftForTheScoreboard;
 	String numberOfPlayerShipsLeftForTheScoreboard;
 	int[][] CPUGrid = new int [10][10];
-	
+	int [][] playerGrid = new int [10][10];
 	
 	
 	public void updateStats(){
