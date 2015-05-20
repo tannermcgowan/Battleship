@@ -38,21 +38,26 @@ public class Data {
 	
 	
 	public boolean checkForWin(){
+		if(numberOfCPUSHipsLeft == 0 || numberOfPlayerShipsLeft == 0){
+			return true;
+		}
 		updateStats();
 		return false;
 	}
 	
 	
-	public void playerFireMissile(){
+	public String playerFireMissile(){
 		//this is the method where the player fires a missile. Should show up
 		numberOfShotsFired++;
 		updateStats();
+		return "00";
 	}
 	
 	
-	public void CPUFireMissile(){
+	public String CPUFireMissile(){
 		//This will be the method where the CPU fires a missile.. If it hits it should fire at the surrounding 8 spaces
 		updateStats();
+		return "00";
 	}
 	
 	public void CPUTakeHit(){
