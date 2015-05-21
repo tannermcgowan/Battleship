@@ -1,20 +1,16 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 
 public class GUI extends JFrame implements ActionListener{
@@ -26,7 +22,10 @@ public class GUI extends JFrame implements ActionListener{
 
 	
 	JButton bottomNorth = new JButton("Placing: Horizontal");
-	JLabel topEast = new JLabel (""); //TANNNER PUT STUFF HERE
+	JLabel topEast = new JLabel("Accuracy: \n\n Enemy Boats Remaining: \n\n"
+			+ "Your Boats Remaining:"); //TANNNER PUT STUFF HERE
+	
+	
 	
 	public GUI(){
 		
@@ -298,3 +297,6 @@ public class GUI extends JFrame implements ActionListener{
 	
 
 }
+
+
+
