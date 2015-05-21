@@ -22,14 +22,13 @@ public class GUI extends JFrame implements ActionListener{
 
 	
 	JButton bottomNorth = new JButton("Placing: Horizontal");
-	JLabel topEast = new JLabel("Accuracy: \n\n Enemy Boats Remaining: \n\n"
-			+ "Your Boats Remaining:"); //TANNNER PUT STUFF HERE
-	
-	
+	JLabel topEast = new JLabel("    "); //TANNNER PUT STUFF HERE
+	JLabel topNorth = new JLabel("Accuracy:  //More stuff to go here");
 	
 	public GUI(){
 		
 		super();
+		topEast.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		//getContentPane().setBackground(new Color(51,255,255) );
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
 		setSize(500,740);
