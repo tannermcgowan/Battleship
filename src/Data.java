@@ -19,11 +19,13 @@ public class Data {
 	
 	
 	public Data(){
-			
+		accuracy=0;	
 	}
 	
 	
-	
+	public int getAccuracy(){
+		return accuracy;
+	}
 	
 	
 	public void updateStats(){
