@@ -26,7 +26,7 @@ public class GUI extends JFrame implements ActionListener{
 
 	
 	JButton bottomNorth = new JButton("Placing: Horizontal");
-	JLabel topEast = new JLabel ("");
+	JLabel topEast = new JLabel (""); //TANNNER PUT STUFF HERE
 	
 	public GUI(){
 		
@@ -143,13 +143,122 @@ public class GUI extends JFrame implements ActionListener{
 			}
 		}
 		else{ 
-			if(placingBoats == true){
+			if(placingBoats == true && e.getActionCommand().toString().charAt(0) != 'r'){
 		
 				
 				int xCoord = Integer.parseInt(e.getActionCommand().toString().charAt(0) + "");
 				int yCoord = Integer.parseInt(e.getActionCommand().toString().charAt(1) + "");
 				
 				
+				/* -------------------- 5-Boat --------------------*/
+				if(curBoat == 4){ // 5-Boat
+					System.out.println(xCoord);
+					if(	(isHorizontal && (yCoord < 6))	|| (!isHorizontal && (xCoord < 6))	){
+						oceanGrid[xCoord][yCoord].setBackground(Color.BLUE);
+						oceanGrid[xCoord][yCoord].setForeground(Color.BLUE);
+						oceanGrid[xCoord][yCoord].setOpaque(true);
+							if(isHorizontal){
+								oceanGrid[xCoord][yCoord + 1].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 1].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 1].setOpaque(true);
+								oceanGrid[xCoord][yCoord + 2].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 2].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 2].setOpaque(true);
+								oceanGrid[xCoord][yCoord + 3].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 3].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 3].setOpaque(true);
+								oceanGrid[xCoord][yCoord + 4].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 4].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 4].setOpaque(true);
+							}
+							if(!isHorizontal){
+								oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 1][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 1][yCoord].setOpaque(true);
+								oceanGrid[xCoord + 2][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 2][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 2][yCoord].setOpaque(true);
+								oceanGrid[xCoord + 3][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 3][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 3][yCoord].setOpaque(true);
+								oceanGrid[xCoord + 4][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 4][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 4][yCoord].setOpaque(true);
+							}
+						curBoat ++;
+					}	
+				}
+				/* -------------------- ------ --------------------*/
+				//
+				//
+				//
+				/* -------------------- 4-Boat --------------------*/
+				if(curBoat == 3){ // 4-Boat
+					System.out.println(xCoord);
+					if(	(isHorizontal && (yCoord < 7))	|| (!isHorizontal && (xCoord < 7))	){
+						oceanGrid[xCoord][yCoord].setBackground(Color.BLUE);
+						oceanGrid[xCoord][yCoord].setForeground(Color.BLUE);
+						oceanGrid[xCoord][yCoord].setOpaque(true);
+							if(isHorizontal){
+								oceanGrid[xCoord][yCoord + 1].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 1].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 1].setOpaque(true);
+								oceanGrid[xCoord][yCoord + 2].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 2].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 2].setOpaque(true);
+								oceanGrid[xCoord][yCoord + 3].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 3].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 3].setOpaque(true);
+							}
+							if(!isHorizontal){
+								oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 1][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 1][yCoord].setOpaque(true);
+								oceanGrid[xCoord + 2][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 2][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 2][yCoord].setOpaque(true);
+								oceanGrid[xCoord + 3][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 3][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 3][yCoord].setOpaque(true);
+							}
+						curBoat ++;
+					}	
+				}
+				/* -------------------- ------ --------------------*/
+				//
+				//
+				//
+				/* -------------------- 3-Boat(s) --------------------*/
+				if(curBoat == 1 || curBoat == 2){ // 3-Boat
+					System.out.println(xCoord);
+					if(	(isHorizontal && (yCoord < 8))	|| (!isHorizontal && (xCoord < 8))	){
+						oceanGrid[xCoord][yCoord].setBackground(Color.BLUE);
+						oceanGrid[xCoord][yCoord].setForeground(Color.BLUE);
+						oceanGrid[xCoord][yCoord].setOpaque(true);
+							if(isHorizontal){
+								oceanGrid[xCoord][yCoord + 1].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 1].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 1].setOpaque(true);
+								oceanGrid[xCoord][yCoord + 2].setBackground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 2].setForeground(Color.BLUE);
+								oceanGrid[xCoord][yCoord + 2].setOpaque(true);
+							}
+							if(!isHorizontal){
+								oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 1][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 1][yCoord].setOpaque(true);
+								oceanGrid[xCoord + 2][yCoord].setBackground(Color.BLUE);
+								oceanGrid[xCoord + 2][yCoord].setForeground(Color.BLUE);
+								oceanGrid[xCoord + 2][yCoord].setOpaque(true);
+							}
+						curBoat ++;
+					}	
+				}
+				/* -------------------- --------- --------------------*/
+				//
+				//
+				//
+				/* -------------------- 2-Boat --------------------*/
 				if(curBoat == 0){ // 2-Boat
 					System.out.println(xCoord);
 					if(	(isHorizontal && (yCoord < 9))	|| (!isHorizontal && (xCoord < 9))	){
@@ -166,10 +275,16 @@ public class GUI extends JFrame implements ActionListener{
 								oceanGrid[xCoord + 1][yCoord].setForeground(Color.BLUE);
 								oceanGrid[xCoord + 1][yCoord].setOpaque(true);
 							}
-						//curBoat ++;
+						curBoat ++;
 					}	
 				}
-			
+				/* -------------------- ------ --------------------*/
+				
+				
+				
+				
+				
+				
 			
 			}
 		}
