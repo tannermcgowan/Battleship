@@ -154,19 +154,19 @@ public class Data {
 		if(curBoat == 4){ // 5-Boat
 			System.out.println(xCoord);
 			if(	(isHorizontal && (yCoord < 6))	|| (!isHorizontal && (xCoord < 6))	){
-				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord + 1][yCoord] != 15 && CPUGrid[xCoord + 2][yCoord] != 15 && CPUGrid[xCoord + 3][yCoord] != 15 && CPUGrid[xCoord + 4][yCoord] != 15)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord][yCoord + 1] != 15 && CPUGrid[xCoord][yCoord + 2] != 15 && CPUGrid[xCoord][yCoord + 3] != 15 && CPUGrid[xCoord][yCoord + 4] != 15)){
-					CPUGrid[xCoord][yCoord] = 15;
+				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 1 && CPUGrid[xCoord + 1][yCoord] != 1 && CPUGrid[xCoord + 2][yCoord] != 1 && CPUGrid[xCoord + 3][yCoord] != 1 && CPUGrid[xCoord + 4][yCoord] != 1)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 1 && CPUGrid[xCoord][yCoord + 1] != 1 && CPUGrid[xCoord][yCoord + 2] != 1 && CPUGrid[xCoord][yCoord + 3] != 1 && CPUGrid[xCoord][yCoord + 4] != 1)){
+					CPUGrid[xCoord][yCoord] = 1;
 						if(isHorizontal){
-							CPUGrid[xCoord][yCoord + 1] = 15;
-							CPUGrid[xCoord][yCoord + 2] = 15;
-							CPUGrid[xCoord][yCoord + 3] = 15;
-							CPUGrid[xCoord][yCoord + 4] = 15;
+							CPUGrid[xCoord][yCoord + 1] = 1;
+							CPUGrid[xCoord][yCoord + 2] = 1;
+							CPUGrid[xCoord][yCoord + 3] = 1;
+							CPUGrid[xCoord][yCoord + 4] = 1;
 						}
 						if(!isHorizontal){
-							CPUGrid[xCoord + 1][yCoord] = 15;
-							CPUGrid[xCoord + 2][yCoord] = 15;
-							CPUGrid[xCoord + 3][yCoord] = 15;
-							CPUGrid[xCoord + 4][yCoord] = 15;
+							CPUGrid[xCoord + 1][yCoord] = 1;
+							CPUGrid[xCoord + 2][yCoord] = 1;
+							CPUGrid[xCoord + 3][yCoord] = 1;
+							CPUGrid[xCoord + 4][yCoord] = 1;
 						}
 					curBoat ++;
 				}
@@ -180,21 +180,21 @@ public class Data {
 		if(curBoat == 3){ // 4-Boat
 			System.out.println(xCoord);
 			if(	(isHorizontal && (yCoord < 7))	|| (!isHorizontal && (xCoord < 7))	){
-				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord + 1][yCoord] != 15 && CPUGrid[xCoord + 
-				   		  2][yCoord] != 15 && CPUGrid[xCoord + 3][yCoord] != 15)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 15 &&
-				   		  CPUGrid[xCoord][yCoord + 1] != 15 
+				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 1 && CPUGrid[xCoord + 1][yCoord] != 1 && CPUGrid[xCoord + 
+				   		  2][yCoord] != 1 && CPUGrid[xCoord + 3][yCoord] != 1)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 1 &&
+				   		  CPUGrid[xCoord][yCoord + 1] != 1 
 				   		  
-				   		  && CPUGrid[xCoord][yCoord + 2] != 15 && CPUGrid[xCoord][yCoord + 3] != 15)){
-					CPUGrid[xCoord][yCoord] = 15;
+				   		  && CPUGrid[xCoord][yCoord + 2] != 1 && CPUGrid[xCoord][yCoord + 3] != 1)){
+					CPUGrid[xCoord][yCoord] = 1;
 						if(isHorizontal){
-							CPUGrid[xCoord][yCoord + 1] = 15;
-							CPUGrid[xCoord][yCoord + 2] = 15;
-							CPUGrid[xCoord][yCoord + 3] = 15;
+							CPUGrid[xCoord][yCoord + 1] = 1;
+							CPUGrid[xCoord][yCoord + 2] = 1;
+							CPUGrid[xCoord][yCoord + 3] = 1;
 						}
 						if(!isHorizontal){
-							CPUGrid[xCoord + 1][yCoord] = 15;
-							CPUGrid[xCoord + 2][yCoord] = 15;
-							CPUGrid[xCoord + 3][yCoord] = 15;
+							CPUGrid[xCoord + 1][yCoord] = 1;
+							CPUGrid[xCoord + 2][yCoord] = 1;
+							CPUGrid[xCoord + 3][yCoord] = 1;
 						}
 					curBoat ++;
 				}
@@ -208,15 +208,15 @@ public class Data {
 		if(curBoat == 1 || curBoat == 2){ // 3-Boat
 			System.out.println(xCoord);
 			if(	(isHorizontal && (yCoord < 8))	|| (!isHorizontal && (xCoord < 8))	){
-				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord + 1][yCoord] != 15 && CPUGrid[xCoord + 2][yCoord] != 15)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord][yCoord + 1] != 15 && CPUGrid[xCoord][yCoord + 2] != 15)){	
-					CPUGrid[xCoord][yCoord] = 15;
+				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 1 && CPUGrid[xCoord + 1][yCoord] != 1 && CPUGrid[xCoord + 2][yCoord] != 1)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 1 && CPUGrid[xCoord][yCoord + 1] != 1 && CPUGrid[xCoord][yCoord + 2] != 1)){	
+					CPUGrid[xCoord][yCoord] = 1;
 						if(isHorizontal){
-							CPUGrid[xCoord][yCoord + 1] = 15;
-							CPUGrid[xCoord][yCoord + 2] = 15;
+							CPUGrid[xCoord][yCoord + 1] = 1;
+							CPUGrid[xCoord][yCoord + 2] = 1;
 						}
 						if(!isHorizontal){
-							CPUGrid[xCoord + 1][yCoord] = 15;
-							CPUGrid[xCoord + 2][yCoord] = 15;
+							CPUGrid[xCoord + 1][yCoord] = 1;
+							CPUGrid[xCoord + 2][yCoord] = 1;
 						}
 					curBoat ++;
 				}
@@ -230,13 +230,13 @@ public class Data {
 		if(curBoat == 0){ // 2-Boat
 			System.out.println(xCoord);
 			if(	(isHorizontal && (yCoord < 9))	|| (!isHorizontal && (xCoord < 9))	){
-				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord + 1][yCoord] != 15)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord][yCoord + 1] != 15)){	
-					CPUGrid[xCoord][yCoord] = 15;
+				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 1 && CPUGrid[xCoord + 1][yCoord] != 1)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 1 && CPUGrid[xCoord][yCoord + 1] != 1)){	
+					CPUGrid[xCoord][yCoord] = 1;
 						if(isHorizontal){
-							CPUGrid[xCoord][yCoord + 1] = 15;
+							CPUGrid[xCoord][yCoord + 1] = 1;
 						}
 						if(!isHorizontal){
-							CPUGrid[xCoord + 1][yCoord] = 15;
+							CPUGrid[xCoord + 1][yCoord] = 1;
 						}
 					curBoat ++;
 				}
