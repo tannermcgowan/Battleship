@@ -9,17 +9,12 @@ public class Data {
 	int accuracy = 0;
 	int numberOfCPUSHipsLeft = 5;
 	int numberOfPlayerShipsLeft = 5;
-	String accuracyForTheScoreboard;
-	String numberOfShotsFiredForTheScoreboard;
-	String numberOfShotsThatHitForTheScoreboard;
-	String numberOfCPUSHipsLeftForTheScoreboard;
-	String numberOfPlayerShipsLeftForTheScoreboard;
 	int[][] CPUGrid = new int [10][10];
 	int [][] playerGrid = new int [10][10];
 	
 	
 	public Data(){
-		accuracy=0;	
+		
 	}
 	
 	
@@ -41,15 +36,7 @@ public class Data {
 
 		accuracy = numberOfShotsFired / numberOfShotsThatHit;
 		 
-		accuracyForTheScoreboard = "Your Accuracy Is " + accuracy*100 + "%";
-		
-		numberOfShotsFiredForTheScoreboard = "You have fired " + numberOfShotsFired + " shots";
-		
-		numberOfShotsThatHitForTheScoreboard = "You have hit an enemy boat " + numberOfShotsThatHit + " times";
-		
-		numberOfCPUSHipsLeftForTheScoreboard = "The enemy has " + numberOfCPUSHipsLeft +  " ships left";
-		
-		numberOfPlayerShipsLeftForTheScoreboard = "The enemy has sunken " + (5 - numberOfPlayerShipsLeft) + " of your ships";
+	
 		}
 	}
 	
