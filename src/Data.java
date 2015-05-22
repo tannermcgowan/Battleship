@@ -27,6 +27,13 @@ public class Data {
 		return accuracy;
 	}
 	
+	public int getEnemyShips(){
+		return numberOfCPUSHipsLeft;
+	}
+	
+	public int getPlayerShips(){
+		return numberOfPlayerShipsLeft;
+	}
 	
 	public void updateStats(){
 		if(checkForWin()==false){
