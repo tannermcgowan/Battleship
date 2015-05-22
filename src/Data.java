@@ -32,8 +32,6 @@ public class Data {
 	
 	public static void main(String[] args){
 		
-		//debugBoard();
-		
 	}
 	
 	public void debugBoard(){

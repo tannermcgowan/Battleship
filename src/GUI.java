@@ -136,6 +136,8 @@ public class GUI extends JFrame implements ActionListener{
 	
 	public static void main(String[] args){
 		GUI gui = new GUI();
+		Data F = new Data();
+		F.debugBoard();
 		
 	}
 
