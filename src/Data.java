@@ -15,6 +15,8 @@ public class Data {
 	int numberOfPlayerShipsLeft = 5;
 	int[][] CPUGrid = new int [10][10];
 	int [][] playerGrid = new int [10][10];
+	int curBoat = 0;
+
 	
 	
 	public Data(){
@@ -143,9 +145,8 @@ public class Data {
 	
 	public void CPUPlaceShip() {
 		
-		int xCoord = (int)Math.random()*10;
-		int yCoord = (int)Math.random()*10;
-		int curBoat = 0;
+		int xCoord = (int)(Math.random()*10);
+		int yCoord = (int)(Math.random()*10);
 		boolean isHorizontal = true;
 		if(Math.random() > .5f) isHorizontal = false;
 		
@@ -249,3 +250,4 @@ public class Data {
 	
 	
 }
+
