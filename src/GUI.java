@@ -37,8 +37,9 @@ public class GUI extends JFrame implements ActionListener{
 	public GUI(){
 		
 		super();
-		topEast.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		//getContentPane().setBackground(new Color(51,255,255) );
+		Data G = new Data();
+		topNorth.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getPlayerShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getEnemyShips() + "<br> <br> </p></html>");
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
 		setSize(500,740);
 		setResizable(false);
@@ -51,7 +52,7 @@ public class GUI extends JFrame implements ActionListener{
 		bottomPanel.setLayout(new BorderLayout());
 		bottomNorth.setLayout(new BoxLayout(bottomNorth, BoxLayout.LINE_AXIS));
 		
-		
+	
 		
 		FlipButton.addActionListener(this);
 		FlipButton.setActionCommand("flipHorizontal");
