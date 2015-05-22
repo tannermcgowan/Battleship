@@ -1,3 +1,7 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class Data {
@@ -7,7 +11,7 @@ public class Data {
 	int numberOfShotsFired = 0;
 	int numberOfShotsThatHit = 0;
 	int accuracy = 0;
-	int numberOfCPUSHipsLeft = 5;
+	int numberOfCPUShipsLeft = 5;
 	int numberOfPlayerShipsLeft = 5;
 	int[][] CPUGrid = new int [10][10];
 	int [][] playerGrid = new int [10][10];
@@ -15,15 +19,52 @@ public class Data {
 	
 	public Data(){
 		
+		playerTurn = true;
+		CPUPlaceShip();
+		CPUPlaceShip();
+		CPUPlaceShip();
+		CPUPlaceShip();
+		CPUPlaceShip();
+
+		
 	}
 	
 	
+	public static void main(String[] args){
+		
+		//debugBoard();
+		
+	}
+	
+	public void debugBoard(){
+	
+		int x = 0;
+		int y = 0;
+		String curRow  = "";
+		
+		while( x < 10){
+			while(y < 10){
+				
+				curRow += (CPUGrid[x][y] + " | ");
+				
+				y++;
+
+			}
+			x++;
+			System.out.println(curRow);
+			curRow = "";
+			y=0;
+		}
+		
+	}
+	
+
 	public int getAccuracy(){
 		return accuracy;
 	}
 	
 	public int getEnemyShips(){
-		return numberOfCPUSHipsLeft;
+		return numberOfCPUShipsLeft;
 	}
 	
 	public int getPlayerShips(){
@@ -43,7 +84,7 @@ public class Data {
 	
 	
 	public boolean checkForWin(){
-		if(numberOfCPUSHipsLeft == 0 || numberOfPlayerShipsLeft == 0){
+		if(numberOfCPUShipsLeft == 0 || numberOfPlayerShipsLeft == 0){
 			return true;
 		}
 		updateStats();
@@ -80,7 +121,7 @@ public class Data {
 	
 	public void CPUGetSunk(){
 		if(checkForWin()==false){//this is the method where the CPU gets a boat sunken
-		numberOfCPUSHipsLeft--;
+		numberOfCPUShipsLeft--;
 		updateStats();
 		}
 	}
@@ -100,8 +141,113 @@ public class Data {
 	}
 	
 	
-	public static void main(String[] args){
+	
+	
+	public void CPUPlaceShip() {
+		
+		int xCoord = (int)Math.random()*10;
+		int yCoord = (int)Math.random()*10;
+		int curBoat = 0;
+		boolean isHorizontal = true;
+		if(Math.random() > .5f) isHorizontal = false;
+		
+		/* -------------------- 5-Boat --------------------*/
+		if(curBoat == 4){ // 5-Boat
+			System.out.println(xCoord);
+			if(	(isHorizontal && (yCoord < 6))	|| (!isHorizontal && (xCoord < 6))	){
+				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord + 1][yCoord] != 15 && CPUGrid[xCoord + 2][yCoord] != 15 && CPUGrid[xCoord + 3][yCoord] != 15 && CPUGrid[xCoord + 4][yCoord] != 15)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord][yCoord + 1] != 15 && CPUGrid[xCoord][yCoord + 2] != 15 && CPUGrid[xCoord][yCoord + 3] != 15 && CPUGrid[xCoord][yCoord + 4] != 15)){
+					CPUGrid[xCoord][yCoord] = 15;
+						if(isHorizontal){
+							CPUGrid[xCoord][yCoord + 1] = 15;
+							CPUGrid[xCoord][yCoord + 2] = 15;
+							CPUGrid[xCoord][yCoord + 3] = 15;
+							CPUGrid[xCoord][yCoord + 4] = 15;
+						}
+						if(!isHorizontal){
+							CPUGrid[xCoord + 1][yCoord] = 15;
+							CPUGrid[xCoord + 2][yCoord] = 15;
+							CPUGrid[xCoord + 3][yCoord] = 15;
+							CPUGrid[xCoord + 4][yCoord] = 15;
+						}
+					curBoat ++;
+				}
+			}	
+		}
+		/* -------------------- ------ --------------------*/
+		//
+		//
+		//
+		/* -------------------- 4-Boat --------------------*/
+		if(curBoat == 3){ // 4-Boat
+			System.out.println(xCoord);
+			if(	(isHorizontal && (yCoord < 7))	|| (!isHorizontal && (xCoord < 7))	){
+				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord + 1][yCoord] != 15 && CPUGrid[xCoord + 
+				   		  2][yCoord] != 15 && CPUGrid[xCoord + 3][yCoord] != 15)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 15 &&
+				   		  CPUGrid[xCoord][yCoord + 1] != 15 
+				   		  
+				   		  && CPUGrid[xCoord][yCoord + 2] != 15 && CPUGrid[xCoord][yCoord + 3] != 15)){
+					CPUGrid[xCoord][yCoord] = 15;
+						if(isHorizontal){
+							CPUGrid[xCoord][yCoord + 1] = 15;
+							CPUGrid[xCoord][yCoord + 2] = 15;
+							CPUGrid[xCoord][yCoord + 3] = 15;
+						}
+						if(!isHorizontal){
+							CPUGrid[xCoord + 1][yCoord] = 15;
+							CPUGrid[xCoord + 2][yCoord] = 15;
+							CPUGrid[xCoord + 3][yCoord] = 15;
+						}
+					curBoat ++;
+				}
+			}	
+		}
+		/* -------------------- ------ --------------------*/
+		//
+		//
+		//
+		/* -------------------- 3-Boat(s) --------------------*/
+		if(curBoat == 1 || curBoat == 2){ // 3-Boat
+			System.out.println(xCoord);
+			if(	(isHorizontal && (yCoord < 8))	|| (!isHorizontal && (xCoord < 8))	){
+				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord + 1][yCoord] != 15 && CPUGrid[xCoord + 2][yCoord] != 15)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord][yCoord + 1] != 15 && CPUGrid[xCoord][yCoord + 2] != 15)){	
+					CPUGrid[xCoord][yCoord] = 15;
+						if(isHorizontal){
+							CPUGrid[xCoord][yCoord + 1] = 15;
+							CPUGrid[xCoord][yCoord + 2] = 15;
+						}
+						if(!isHorizontal){
+							CPUGrid[xCoord + 1][yCoord] = 15;
+							CPUGrid[xCoord + 2][yCoord] = 15;
+						}
+					curBoat ++;
+				}
+			}	
+		}
+		/* -------------------- --------- --------------------*/
+		//
+		//
+		//
+		/* -------------------- 2-Boat --------------------*/
+		if(curBoat == 0){ // 2-Boat
+			System.out.println(xCoord);
+			if(	(isHorizontal && (yCoord < 9))	|| (!isHorizontal && (xCoord < 9))	){
+				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord + 1][yCoord] != 15)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 15 && CPUGrid[xCoord][yCoord + 1] != 15)){	
+					CPUGrid[xCoord][yCoord] = 15;
+						if(isHorizontal){
+							CPUGrid[xCoord][yCoord + 1] = 15;
+						}
+						if(!isHorizontal){
+							CPUGrid[xCoord + 1][yCoord] = 15;
+						}
+					curBoat ++;
+				}
+			}	
+		}
+		/* -------------------- ------ --------------------*/
 		
 	}
+
+	
+	
 	
 }
