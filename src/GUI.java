@@ -211,7 +211,11 @@ public class GUI extends JFrame implements ActionListener{
 				if(curBoat == 3){ // 4-Boat
 					System.out.println(xCoord);
 					if(	(isHorizontal && (yCoord < 7))	|| (!isHorizontal && (xCoord < 7))	){
-						if(		(!(isHorizontal) && oceanGrid[xCoord][yCoord].getBackground() != Color.BLUE && oceanGrid[xCoord + 1][yCoord].getBackground() != Color.BLUE && oceanGrid[xCoord + 2][yCoord].getBackground() != Color.BLUE && oceanGrid[xCoord + 3][yCoord].getBackground() != Color.BLUE)	||	((isHorizontal) && oceanGrid[xCoord][yCoord].getBackground() != Color.BLUE && oceanGrid[xCoord][yCoord + 1].getBackground() != Color.BLUE && oceanGrid[xCoord][yCoord + 2].getBackground() != Color.BLUE && oceanGrid[xCoord][yCoord + 3].getBackground() != Color.BLUE)){
+						if(		(!(isHorizontal) && oceanGrid[xCoord][yCoord].getBackground() != Color.BLUE && oceanGrid[xCoord + 1][yCoord].getBackground() != Color.BLUE && oceanGrid[xCoord + 
+						   		  2][yCoord].getBackground() != Color.BLUE && oceanGrid[xCoord + 3][yCoord].getBackground() != Color.BLUE)	||	((isHorizontal) && oceanGrid[xCoord][yCoord].getBackground() != Color.BLUE &&
+						   		  oceanGrid[xCoord][yCoord + 1].getBackground() != Color.BLUE 
+						   		  
+						   		  && oceanGrid[xCoord][yCoord + 2].getBackground() != Color.BLUE && oceanGrid[xCoord][yCoord + 3].getBackground() != Color.BLUE)){
 							oceanGrid[xCoord][yCoord].setBackground(Color.BLUE);
 							oceanGrid[xCoord][yCoord].setForeground(Color.BLUE);
 							oceanGrid[xCoord][yCoord].setOpaque(true);
