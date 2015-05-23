@@ -21,6 +21,7 @@ public class GUI extends JFrame implements ActionListener{
 	public boolean placingBoats = true;
 	public boolean isHorizontal = true;
 	public int curBoat = 0;
+	public Data G;
 
 	
 	JLabel topEast = new JLabel("                 ");
@@ -37,9 +38,9 @@ public class GUI extends JFrame implements ActionListener{
 	public GUI(){
 		
 		super();
-		Data G = new Data();
+		G = new Data();
 		topNorth.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getPlayerShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getEnemyShips() + "<br> <br> </p></html>");
+		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
 		setSize(500,740);
 		setResizable(false);
@@ -129,15 +130,21 @@ public class GUI extends JFrame implements ActionListener{
 
 		
 		setVisible(true);
-		
+
+		G.debugBoard();
+
 
 	}
 	
 	
 	public static void main(String[] args){
+		Main(); //Basically don't use the real main, cuz its static and stupid. Use a new one instead...	
+	}
+	
+	public static void Main(){
 		GUI gui = new GUI();
-		Data F = new Data();
-		F.debugBoard();
+		
+		
 		
 	}
 
@@ -145,6 +152,8 @@ public class GUI extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 
+		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
+		
 		System.out.println(e.getActionCommand());
 		
 		if(e.getActionCommand() == "flipHorizontal"){
@@ -202,6 +211,7 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord + 4][yCoord].setOpaque(true);
 								}
 							curBoat ++;
+							G.addPlayerShip();
 						}
 					}	
 				}
@@ -244,6 +254,7 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord + 3][yCoord].setOpaque(true);
 								}
 							curBoat ++;
+							G.addPlayerShip();
 						}
 					}	
 				}
@@ -276,6 +287,7 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord + 2][yCoord].setOpaque(true);
 								}
 							curBoat ++;
+							G.addPlayerShip();
 						}
 					}	
 				}
@@ -302,6 +314,7 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord + 1][yCoord].setOpaque(true);
 								}
 							curBoat ++;
+							G.addPlayerShip();
 						}
 					}	
 				}
@@ -316,6 +329,11 @@ public class GUI extends JFrame implements ActionListener{
 			}
 		}
 
+		
+		
+		//Update top scoreboard thing
+		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
+		
 	}
 
 	

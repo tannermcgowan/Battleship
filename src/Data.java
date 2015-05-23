@@ -11,29 +11,38 @@ public class Data {
 	int numberOfShotsFired = 0;
 	int numberOfShotsThatHit = 0;
 	int accuracy = 0;
-	int numberOfCPUShipsLeft = 5;
-	int numberOfPlayerShipsLeft = 5;
+	int numberOfCPUShipsLeft = 0;
+	int numberOfPlayerShipsLeft = 0;
 	int[][] CPUGrid = new int [10][10];
 	int [][] playerGrid = new int [10][10];
 	int curBoat = 0;
-
+	int curGameState = 0; //0 is placing boats, 1 is running, 2 is game over
 	
 	
 	public Data(){
 		
+		while(numberOfCPUShipsLeft < 5){
+			CPUPlaceShip();
+		}
+		
+		
 		playerTurn = true;
-		CPUPlaceShip();
-		CPUPlaceShip();
-		CPUPlaceShip();
-		CPUPlaceShip();
-		CPUPlaceShip();
+		
 
 		
 	}
 	
 	
 	public static void main(String[] args){
+
+		//if(numberOfPlayerShipsLeft == 5){
+		//	
+		//}
 		
+	}
+	
+	public void addPlayerShip (){
+		numberOfPlayerShipsLeft ++;
 	}
 	
 	public void debugBoard(){
@@ -169,6 +178,7 @@ public class Data {
 							CPUGrid[xCoord + 4][yCoord] = 1;
 						}
 					curBoat ++;
+					numberOfCPUShipsLeft ++;
 				}
 			}	
 		}
@@ -197,6 +207,7 @@ public class Data {
 							CPUGrid[xCoord + 3][yCoord] = 1;
 						}
 					curBoat ++;
+					numberOfCPUShipsLeft ++;
 				}
 			}	
 		}
@@ -219,6 +230,7 @@ public class Data {
 							CPUGrid[xCoord + 2][yCoord] = 1;
 						}
 					curBoat ++;
+					numberOfCPUShipsLeft ++;
 				}
 			}	
 		}
@@ -239,6 +251,7 @@ public class Data {
 							CPUGrid[xCoord + 1][yCoord] = 1;
 						}
 					curBoat ++;
+					numberOfCPUShipsLeft ++;
 				}
 			}	
 		}
