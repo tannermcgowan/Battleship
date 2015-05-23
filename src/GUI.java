@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 public class GUI extends JFrame implements ActionListener{
 	
 	public JButton[][] oceanGrid = new JButton [10][10];
-	public boolean placingBoats = true;
 	public boolean isHorizontal = true;
 	public int curBoat = 0;
 	public Data G;
@@ -157,17 +156,29 @@ public class GUI extends JFrame implements ActionListener{
 		System.out.println(e.getActionCommand());
 		
 		if(e.getActionCommand() == "flipHorizontal"){
-			if(isHorizontal){
-				isHorizontal = false;
-				FlipButton.setText("Placing: Vertical");
+			if(G.getGameState() == 0){
+				if(isHorizontal){
+					isHorizontal = false;
+					FlipButton.setText("Placing: Vertical");
+				}
+				else{
+					isHorizontal = true;
+					FlipButton.setText("Placing: Horizontal");
+				}
 			}
-			else{
-				isHorizontal = true;
-				FlipButton.setText("Placing: Horizontal");
+			
+			if(G.getGameState() == 1){
+				if(G.getTurn()){
+					FlipButton.setText("Your Turn!");
+				}
+				else{
+					FlipButton.setText("Enemy Turn!");
+				}
 			}
+			
 		}
 		else{ 
-			if(placingBoats == true && e.getActionCommand().toString().charAt(0) != 'r'){
+			if(G.getGameState() == 0 && e.getActionCommand().toString().charAt(0) != 'r'){
 		
 				
 				int xCoord = Integer.parseInt(e.getActionCommand().toString().charAt(0) + "");
@@ -212,6 +223,8 @@ public class GUI extends JFrame implements ActionListener{
 								}
 							curBoat ++;
 							G.addPlayerShip();
+							FlipButton.setText("Your Turn!");
+							G.setGameState(1);
 						}
 					}	
 				}

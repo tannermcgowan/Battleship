@@ -34,11 +34,20 @@ public class Data {
 	
 	
 	public static void main(String[] args){
-
-		//if(numberOfPlayerShipsLeft == 5){
-		//	
-		//}
 		
+		
+	}
+	
+	public boolean getTurn(){
+		return playerTurn;
+	}
+	
+	public void setGameState(int i){
+		curGameState = i;
+	}
+	
+	public int getGameState(){
+		return curGameState;
 	}
 	
 	public void addPlayerShip (){
