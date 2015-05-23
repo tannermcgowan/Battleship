@@ -163,7 +163,7 @@ public class GUI extends JFrame implements ActionListener{
 						oceanGrid[CPUx][CPUy].setForeground(Color.CYAN);
 						oceanGrid[CPUx][CPUy].setOpaque(true);
 					}
-					if(G.getSpace(CPUx, CPUy) == 3){ // Shot and hit
+					if(G.getPlayerSpace(CPUx, CPUy) == 3){ // Shot and hit
 						oceanGrid[CPUx][CPUy].setBackground(Color.RED);
 						oceanGrid[CPUx][CPUy].setForeground(Color.RED);
 						oceanGrid[CPUx][CPUy].setOpaque(true);
@@ -175,6 +175,7 @@ public class GUI extends JFrame implements ActionListener{
 					
 				}
 				
+				CPUFireMissile();
 				
 			}
 			
@@ -207,6 +208,7 @@ public class GUI extends JFrame implements ActionListener{
 				G.debugBoard();
 				CPUFireMissile();
 			}
+			
 		}
 	}
 
