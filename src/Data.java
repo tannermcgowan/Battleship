@@ -38,6 +38,51 @@ public class Data {
 		
 	}
 	
+	public void SetPlayerGridSpot(int x, int y){
+		playerGrid[x][y] = 1;
+	}
+	
+	public void flipPlayer(){
+		
+		if(playerTurn == true){
+			playerTurn = false;
+		}
+		else{
+			playerTurn = true;
+		}
+	}
+	
+	public int getSpace(int x, int y){
+		return CPUGrid[x][y];
+	}
+	
+	public int getPlayerSpace(int x, int y){
+		return playerGrid[x][y];
+	}
+	
+	public void recieveCPUShot(int x, int y){
+		
+		if(playerGrid[x][y] == 0){ //Shot and miss
+			playerGrid[x][y] += 2;
+		}	
+		if(playerGrid[x][y] == 1){ //Shot and hit
+			playerGrid[x][y] += 2;
+		}
+			
+	}
+	
+	public void recievePlayerShot(int x, int y){
+		
+		if(CPUGrid[x][y] == 0){ //Shot and miss
+			CPUGrid[x][y] += 2;
+		}	
+		if(CPUGrid[x][y] == 1){ //Shot and hit
+			CPUGrid[x][y] += 2;
+		}
+			
+	}
+	
+	
 	public boolean getTurn(){
 		return playerTurn;
 	}
@@ -90,62 +135,42 @@ public class Data {
 	}
 	
 	public void updateStats(){
-		if(checkForWin()==false){
+		if(curGameState == 1){
 		//this will update the stats
-
-		accuracy = numberOfShotsFired / numberOfShotsThatHit;
-		 
+			
+		if(numberOfShotsFired > 0){
+			accuracy = numberOfShotsThatHit / numberOfShotsFired;
+		}
 	
 		}
 	}
 	
 	
 	
-	public boolean checkForWin(){
-		if(numberOfCPUShipsLeft == 0 || numberOfPlayerShipsLeft == 0){
-			return true;
-		}
-		updateStats();
-		return false;
+	
+	
+	public void addPlayerShot(){
+		numberOfShotsFired ++;
 	}
 	
 	
-	public String playerFireMissile(){
-		if(checkForWin()==false){//this is the method where the player fires a missile. Should show up
-		numberOfShotsFired++;
-		updateStats();
-		//we decided we would return a string of 2 numbers, which we can then split and use as coordinates
-		return "00";
-		}
-		return"a";
-	}
-	
-	
-	public String CPUFireMissile(){
-		if(checkForWin()==false){//This will be the method where the CPU fires a missile.. If it hits it should fire at the surrounding 8 spaces
-		updateStats();
-		//we decided we would return a string of 2 numbers, which we can then split and use as coordinates
-		return "00";
-		}
-		return"a";
-	}
 	
 	public void CPUTakeHit(){
-		if(checkForWin()==false){//this will be the method that scores the data when the CPU bopat takes a hit
+		if(curGameState == 1){//this will be the method that scores the data when the CPU bopat takes a hit
 		numberOfShotsThatHit++;
 		updateStats();
 		}
 	}
 	
 	public void CPUGetSunk(){
-		if(checkForWin()==false){//this is the method where the CPU gets a boat sunken
+		if(curGameState == 1){//this is the method where the CPU gets a boat sunken
 		numberOfCPUShipsLeft--;
 		updateStats();
 		}
 	}
 	
 	public void playerGetSunk(){
-		if(checkForWin()==false){
+		if(curGameState == 1){
 		//this is the method where the player loses a ship, and the buttons all turn red
 		numberOfPlayerShipsLeft--;
 		updateStats();
@@ -153,7 +178,7 @@ public class Data {
 	}
 	
 	public void playerTakeHit(){
-		if(checkForWin()==false){//this method is where the JButton that was hit turns red, and stores the data that it was hit
+		if(curGameState == 1){//this method is where the JButton that was hit turns red, and stores the data that it was hit
 		updateStats();
 		}
 	}

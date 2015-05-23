@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 public class GUI extends JFrame implements ActionListener{
 	
 	public JButton[][] oceanGrid = new JButton [10][10];
+	public JButton[][] radarGrid = new JButton [10][10];
 	public boolean isHorizontal = true;
 	public int curBoat = 0;
 	public Data G;
@@ -83,6 +84,7 @@ public class GUI extends JFrame implements ActionListener{
 				radarPanel.add(b, BorderLayout.CENTER);
 				b.addActionListener(this);
 				b.setActionCommand("r" + x + "" + y);
+				radarGrid[x][y] = b;
 				y++;
 			}
 			x++;
@@ -137,16 +139,76 @@ public class GUI extends JFrame implements ActionListener{
 	
 	
 	public static void main(String[] args){
-		Main(); //Basically don't use the real main, cuz its static and stupid. Use a new one instead...	
+		GUI gui = new GUI();
 	}
 	
-	public static void Main(){
-		GUI gui = new GUI();
-		
-		
+	
+	public void CPUFireMissile(){
+		if( G.curGameState == 1 && G.getTurn() == false){
+			
+			int CPUx = (int)(Math.random() * 10);
+			if(CPUx == 10) CPUx = 9;
+			
+			int CPUy = (int)(Math.random() * 10);
+			if(CPUy == 10) CPUx = 9;
+			
+			if(G.curGameState == 1 && G.getTurn() == false){
+				if(G.getPlayerSpace(CPUx, CPUy) < 2){
+
+					System.out.println("CPU shooting at " + CPUx + " , "+ CPUy);					
+					G.recieveCPUShot(CPUx, CPUy);
+					
+					if(G.getPlayerSpace(CPUx, CPUy) == 2){ // Shot and missed
+						oceanGrid[CPUx][CPUy].setBackground(Color.CYAN);
+						oceanGrid[CPUx][CPUy].setForeground(Color.CYAN);
+						oceanGrid[CPUx][CPUy].setOpaque(true);
+					}
+					if(G.getSpace(CPUx, CPUy) == 3){ // Shot and hit
+						oceanGrid[CPUx][CPUy].setBackground(Color.RED);
+						oceanGrid[CPUx][CPUy].setForeground(Color.RED);
+						oceanGrid[CPUx][CPUy].setOpaque(true);
+					}
+					
+					G.flipPlayer();
+					G.debugBoard();
+					
+					
+				}
+				
+				
+			}
+			
+			
+		}
 		
 	}
+	
 
+	public void playerFireMissile(int x, int y){
+		if( G.curGameState == 1 && G.getTurn() == true){//this is the method where the player fires a missile. Should show up
+			if(G.getSpace(x, y) < 2){
+				G.addPlayerShot();
+				G.updateStats();
+				System.out.println("Shooting at " + x + " , "+ y);
+				G.recievePlayerShot(x, y);
+				
+				if(G.getSpace(x, y) == 2){ // Shot and missed
+					radarGrid[x][y].setBackground(Color.CYAN);
+					radarGrid[x][y].setForeground(Color.CYAN);
+					radarGrid[x][y].setOpaque(true);
+				}
+				if(G.getSpace(x, y) == 3){ // Shot and hit
+					radarGrid[x][y].setBackground(Color.RED);
+					radarGrid[x][y].setForeground(Color.RED);
+					radarGrid[x][y].setOpaque(true);
+				}
+				
+				G.flipPlayer();
+				G.debugBoard();
+				CPUFireMissile();
+			}
+		}
+	}
 
 	
 	public void actionPerformed(ActionEvent e) {
@@ -155,6 +217,33 @@ public class GUI extends JFrame implements ActionListener{
 		
 		System.out.println(e.getActionCommand());
 		
+		if(G.getGameState() == 1){
+			if(G.getTurn()){
+				FlipButton.setText("Your Turn!");
+			}
+			else{
+				FlipButton.setText("Enemy Turn!");
+			}
+			
+			
+			if(e.getActionCommand().charAt(0) == 'r' && e.getActionCommand().length() == 3){
+				System.out.println("Tried to do something on radar");
+				playerFireMissile(	Character.getNumericValue((e.getActionCommand().charAt(1)))	,	Character.getNumericValue((e.getActionCommand().charAt(2)))		);
+			}
+			
+			
+			
+			
+			
+		}
+		
+
+		
+		
+		
+		
+		
+		if(G.getGameState() == 0){
 		if(e.getActionCommand() == "flipHorizontal"){
 			if(G.getGameState() == 0){
 				if(isHorizontal){
@@ -167,14 +256,7 @@ public class GUI extends JFrame implements ActionListener{
 				}
 			}
 			
-			if(G.getGameState() == 1){
-				if(G.getTurn()){
-					FlipButton.setText("Your Turn!");
-				}
-				else{
-					FlipButton.setText("Enemy Turn!");
-				}
-			}
+			
 			
 		}
 		else{ 
@@ -206,6 +288,11 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord][yCoord + 4].setBackground(Color.BLUE);
 									oceanGrid[xCoord][yCoord + 4].setForeground(Color.BLUE);
 									oceanGrid[xCoord][yCoord + 4].setOpaque(true);
+									G.SetPlayerGridSpot(xCoord, yCoord);
+									G.SetPlayerGridSpot(xCoord, yCoord + 1);
+									G.SetPlayerGridSpot(xCoord, yCoord + 2);
+									G.SetPlayerGridSpot(xCoord, yCoord + 3);
+									G.SetPlayerGridSpot(xCoord, yCoord + 4);
 								}
 								if(!isHorizontal){
 									oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
@@ -220,6 +307,11 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord + 4][yCoord].setBackground(Color.BLUE);
 									oceanGrid[xCoord + 4][yCoord].setForeground(Color.BLUE);
 									oceanGrid[xCoord + 4][yCoord].setOpaque(true);
+									G.SetPlayerGridSpot(xCoord, yCoord);
+									G.SetPlayerGridSpot(xCoord + 1, yCoord);
+									G.SetPlayerGridSpot(xCoord + 2, yCoord);
+									G.SetPlayerGridSpot(xCoord + 3, yCoord);
+									G.SetPlayerGridSpot(xCoord + 4, yCoord);
 								}
 							curBoat ++;
 							G.addPlayerShip();
@@ -254,6 +346,10 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord][yCoord + 3].setBackground(Color.BLUE);
 									oceanGrid[xCoord][yCoord + 3].setForeground(Color.BLUE);
 									oceanGrid[xCoord][yCoord + 3].setOpaque(true);
+									G.SetPlayerGridSpot(xCoord, yCoord);
+									G.SetPlayerGridSpot(xCoord, yCoord + 1);
+									G.SetPlayerGridSpot(xCoord, yCoord + 2);
+									G.SetPlayerGridSpot(xCoord, yCoord + 3);
 								}
 								if(!isHorizontal){
 									oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
@@ -265,6 +361,10 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord + 3][yCoord].setBackground(Color.BLUE);
 									oceanGrid[xCoord + 3][yCoord].setForeground(Color.BLUE);
 									oceanGrid[xCoord + 3][yCoord].setOpaque(true);
+									G.SetPlayerGridSpot(xCoord, yCoord);
+									G.SetPlayerGridSpot(xCoord + 1, yCoord);
+									G.SetPlayerGridSpot(xCoord + 2, yCoord);
+									G.SetPlayerGridSpot(xCoord + 3, yCoord);
 								}
 							curBoat ++;
 							G.addPlayerShip();
@@ -290,6 +390,9 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord][yCoord + 2].setBackground(Color.BLUE);
 									oceanGrid[xCoord][yCoord + 2].setForeground(Color.BLUE);
 									oceanGrid[xCoord][yCoord + 2].setOpaque(true);
+									G.SetPlayerGridSpot(xCoord, yCoord);
+									G.SetPlayerGridSpot(xCoord, yCoord + 1);
+									G.SetPlayerGridSpot(xCoord, yCoord + 2);
 								}
 								if(!isHorizontal){
 									oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
@@ -298,6 +401,9 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord + 2][yCoord].setBackground(Color.BLUE);
 									oceanGrid[xCoord + 2][yCoord].setForeground(Color.BLUE);
 									oceanGrid[xCoord + 2][yCoord].setOpaque(true);
+									G.SetPlayerGridSpot(xCoord, yCoord);
+									G.SetPlayerGridSpot(xCoord + 1, yCoord);
+									G.SetPlayerGridSpot(xCoord + 2, yCoord);
 								}
 							curBoat ++;
 							G.addPlayerShip();
@@ -320,11 +426,16 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord][yCoord + 1].setBackground(Color.BLUE);
 									oceanGrid[xCoord][yCoord + 1].setForeground(Color.BLUE);
 									oceanGrid[xCoord][yCoord + 1].setOpaque(true);
+									G.SetPlayerGridSpot(xCoord, yCoord);
+									G.SetPlayerGridSpot(xCoord, yCoord + 1);
+
 								}
 								if(!isHorizontal){
 									oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
 									oceanGrid[xCoord + 1][yCoord].setForeground(Color.BLUE);
 									oceanGrid[xCoord + 1][yCoord].setOpaque(true);
+									G.SetPlayerGridSpot(xCoord, yCoord);
+									G.SetPlayerGridSpot(xCoord + 1, yCoord);
 								}
 							curBoat ++;
 							G.addPlayerShip();
@@ -340,6 +451,7 @@ public class GUI extends JFrame implements ActionListener{
 				
 			
 			}
+			
 		}
 
 		
@@ -350,7 +462,7 @@ public class GUI extends JFrame implements ActionListener{
 	}
 
 	
-	
+	}
 	
 	
 	
