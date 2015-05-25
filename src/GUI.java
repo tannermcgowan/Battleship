@@ -22,6 +22,7 @@ public class GUI extends JFrame implements ActionListener{
 	public boolean isHorizontal = true;
 	public int curBoat = 0;
 	public Data G;
+	String lastHit = "";
 
 	
 	JLabel topEast = new JLabel("                 ");
@@ -152,6 +153,30 @@ public class GUI extends JFrame implements ActionListener{
 			int CPUy = (int)(Math.random() * 10);
 			if(CPUy == 10) CPUx = 9;
 			
+			if(lastHit != ""){
+				if(lastHit.charAt(2) == 'n'){
+					CPUy = Character.getNumericValue(lastHit.charAt(0));
+					CPUx = Character.getNumericValue(lastHit.charAt(0)) + 1;
+					if(CPUx > 9) CPUx = 8;
+				}
+				if(lastHit.charAt(2) == 'e'){
+					CPUy = Character.getNumericValue(lastHit.charAt(0)) + 1;
+					CPUx = Character.getNumericValue(lastHit.charAt(0));
+					if(CPUy > 9) CPUy = 8;
+				}
+				if(lastHit.charAt(2) == 's'){
+					CPUy = Character.getNumericValue(lastHit.charAt(0));
+					CPUx = Character.getNumericValue(lastHit.charAt(0)) - 1;
+					if(CPUx < 0) CPUx = 1;
+				}
+				if(lastHit.charAt(2) == 'w'){
+					CPUy = Character.getNumericValue(lastHit.charAt(0)) - 1;
+					CPUx = Character.getNumericValue(lastHit.charAt(0));
+					if(CPUy < 0) CPUy = 1;
+				}
+			}
+			
+			
 			if(G.curGameState == 1 && G.getTurn() == false){
 				if(G.getPlayerSpace(CPUx, CPUy) < 2){
 
@@ -162,21 +187,30 @@ public class GUI extends JFrame implements ActionListener{
 						oceanGrid[CPUx][CPUy].setBackground(Color.CYAN);
 						oceanGrid[CPUx][CPUy].setForeground(Color.CYAN);
 						oceanGrid[CPUx][CPUy].setOpaque(true);
+						if(lastHit != ""){
+							if(lastHit.charAt(2) == 'n' ) lastHit = "" + CPUx + CPUy + 'e';
+							if(lastHit.charAt(2) == 'e' ) lastHit = "" + CPUx + CPUy + 's';
+							if(lastHit.charAt(2) == 's' ) lastHit = "" + CPUx + CPUy + 'w';
+							if(lastHit.charAt(2) == 'w' ) lastHit = "";
+						}
 					}
 					if(G.getPlayerSpace(CPUx, CPUy) == 3){ // Shot and hit
 						oceanGrid[CPUx][CPUy].setBackground(Color.RED);
 						oceanGrid[CPUx][CPUy].setForeground(Color.RED);
 						oceanGrid[CPUx][CPUy].setOpaque(true);
+						if(lastHit != ""){
+							lastHit = "" + CPUx + CPUy + lastHit.charAt(2);
+						}
+						else lastHit = "" + CPUx + CPUy + 'n';
+						
 					}
 					
 					G.flipPlayer();
-					G.debugBoard();
+					//G.debugBoard();
 					
 					
 				}
-				
-				CPUFireMissile();
-				
+				else{	CPUFireMissile();	}
 			}
 			
 			
@@ -205,7 +239,7 @@ public class GUI extends JFrame implements ActionListener{
 				}
 				
 				G.flipPlayer();
-				G.debugBoard();
+				//G.debugBoard();
 				CPUFireMissile();
 			}
 			
