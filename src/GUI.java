@@ -163,8 +163,8 @@ public class GUI extends JFrame implements ActionListener{
 			if(lastHit != ""){
 				if(lastHit.charAt(2) == 'n'){
 					CPUy = Character.getNumericValue(lastHit.charAt(1));
-					CPUx = Character.getNumericValue(lastHit.charAt(0)) + 1;
-					if(CPUx > 9) CPUx = 8;
+					CPUx = Character.getNumericValue(lastHit.charAt(0)) - 1;
+					if(CPUx < 0) CPUx = 1;
 				}
 				if(lastHit.charAt(2) == 'e'){
 					CPUy = Character.getNumericValue(lastHit.charAt(1)) + 1;
@@ -173,8 +173,8 @@ public class GUI extends JFrame implements ActionListener{
 				}
 				if(lastHit.charAt(2) == 's'){
 					CPUy = Character.getNumericValue(lastHit.charAt(1));
-					CPUx = Character.getNumericValue(lastHit.charAt(0)) - 1;
-					if(CPUx < 0) CPUx = 1;
+					CPUx = Character.getNumericValue(lastHit.charAt(0)) + 1;
+					if(CPUx > 9) CPUx = 8;
 				}
 				if(lastHit.charAt(2) == 'w'){
 					CPUy = Character.getNumericValue(lastHit.charAt(1)) - 1;
@@ -195,10 +195,10 @@ public class GUI extends JFrame implements ActionListener{
 						oceanGrid[CPUx][CPUy].setForeground(Color.CYAN);
 						oceanGrid[CPUx][CPUy].setOpaque(true);
 						if(lastHit != ""){
-							if(lastHit.charAt(2) == 'n' ) lastHit = "" + CPUx + CPUy + 'e';
-							if(lastHit.charAt(2) == 'e' ) lastHit = "" + CPUx + CPUy + 's';
-							if(lastHit.charAt(2) == 's' ) lastHit = "" + CPUx + CPUy + 'w';
-							if(lastHit.charAt(2) == 'w' ) lastHit = "";
+							if(lastHit.charAt(2) == 'n' ) lastHit = "" + lastHit.charAt(0) + lastHit.charAt(1) + 'e';
+							else	if(lastHit.charAt(2) == 'e' ) lastHit = "" + lastHit.charAt(0) + lastHit.charAt(1) + 's';
+							else	if(lastHit.charAt(2) == 's' ) lastHit = "" + lastHit.charAt(0) + lastHit.charAt(1) + 'w';
+							else	if(lastHit.charAt(2) == 'w' ) lastHit = "";
 						}
 					}
 					if(G.getPlayerSpace(CPUx, CPUy) == 3){ // Shot and hit
@@ -217,7 +217,17 @@ public class GUI extends JFrame implements ActionListener{
 					
 					
 				}
-				else{	CPUFireMissile();	}
+				else{
+					//lastHit = "";
+					if(lastHit != ""){
+					if(lastHit.charAt(2) == 'n' ) lastHit = "" + lastHit.charAt(0) + lastHit.charAt(1) + 'e';
+					else	if(lastHit.charAt(2) == 'e' ) lastHit = "" + lastHit.charAt(0) + lastHit.charAt(1) + 's';
+					else	if(lastHit.charAt(2) == 's' ) lastHit = "" + lastHit.charAt(0) + lastHit.charAt(1) + 'w';
+					else	if(lastHit.charAt(2) == 'w' ) lastHit = "";
+					}
+					
+					CPUFireMissile();
+				}
 			}
 			
 			
@@ -229,7 +239,7 @@ public class GUI extends JFrame implements ActionListener{
 
 	public void playerFireMissile(int x, int y){
 		repaint();
-		if( G.curGameState == 1 && G.getTurn() == true){//this is the method where the player fires a missile. Should show up
+		if( G.curGameState == 1 && G.getTurn() == true){	//this is the method where the player fires a missile. Should show up
 			if(G.getSpace(x, y) < 2){
 				G.addPlayerShot();
 				G.updateStats();
