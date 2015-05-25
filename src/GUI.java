@@ -155,22 +155,22 @@ public class GUI extends JFrame implements ActionListener{
 			
 			if(lastHit != ""){
 				if(lastHit.charAt(2) == 'n'){
-					CPUy = Character.getNumericValue(lastHit.charAt(0));
+					CPUy = Character.getNumericValue(lastHit.charAt(1));
 					CPUx = Character.getNumericValue(lastHit.charAt(0)) + 1;
 					if(CPUx > 9) CPUx = 8;
 				}
 				if(lastHit.charAt(2) == 'e'){
-					CPUy = Character.getNumericValue(lastHit.charAt(0)) + 1;
+					CPUy = Character.getNumericValue(lastHit.charAt(1)) + 1;
 					CPUx = Character.getNumericValue(lastHit.charAt(0));
 					if(CPUy > 9) CPUy = 8;
 				}
 				if(lastHit.charAt(2) == 's'){
-					CPUy = Character.getNumericValue(lastHit.charAt(0));
+					CPUy = Character.getNumericValue(lastHit.charAt(1));
 					CPUx = Character.getNumericValue(lastHit.charAt(0)) - 1;
 					if(CPUx < 0) CPUx = 1;
 				}
 				if(lastHit.charAt(2) == 'w'){
-					CPUy = Character.getNumericValue(lastHit.charAt(0)) - 1;
+					CPUy = Character.getNumericValue(lastHit.charAt(1)) - 1;
 					CPUx = Character.getNumericValue(lastHit.charAt(0));
 					if(CPUy < 0) CPUy = 1;
 				}
