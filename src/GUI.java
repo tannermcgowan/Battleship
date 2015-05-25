@@ -1,10 +1,11 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Font;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -145,6 +146,12 @@ public class GUI extends JFrame implements ActionListener{
 	
 	
 	public void CPUFireMissile(){
+		/*try{ 
+			TimeUnit.SECONDS.sleep(2);
+		}catch(Exception e){
+			e.printStackTrace();
+		}*/
+		
 		if( G.curGameState == 1 && G.getTurn() == false){
 			
 			int CPUx = (int)(Math.random() * 10);
@@ -216,10 +223,12 @@ public class GUI extends JFrame implements ActionListener{
 			
 		}
 		
+		
 	}
 	
 
 	public void playerFireMissile(int x, int y){
+		repaint();
 		if( G.curGameState == 1 && G.getTurn() == true){//this is the method where the player fires a missile. Should show up
 			if(G.getSpace(x, y) < 2){
 				G.addPlayerShot();
@@ -241,6 +250,7 @@ public class GUI extends JFrame implements ActionListener{
 				G.flipPlayer();
 				//G.debugBoard();
 				CPUFireMissile();
+				
 			}
 			
 		}
