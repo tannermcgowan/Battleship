@@ -349,6 +349,7 @@ public class GUI extends JFrame implements ActionListener{
 									G.SetPlayerGridSpot(xCoord, yCoord + 2);
 									G.SetPlayerGridSpot(xCoord, yCoord + 3);
 									G.SetPlayerGridSpot(xCoord, yCoord + 4);
+									G.PlayerBoat5 = "" + xCoord + yCoord + xCoord + (yCoord + 1) + xCoord + (yCoord + 2) + xCoord + (yCoord + 3) + xCoord + (yCoord + 4);
 								}
 								if(!isHorizontal){
 									oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
@@ -368,6 +369,7 @@ public class GUI extends JFrame implements ActionListener{
 									G.SetPlayerGridSpot(xCoord + 2, yCoord);
 									G.SetPlayerGridSpot(xCoord + 3, yCoord);
 									G.SetPlayerGridSpot(xCoord + 4, yCoord);
+									G.PlayerBoat5 = "" + xCoord + yCoord + (xCoord + 1) + yCoord + (xCoord + 2) + yCoord + (xCoord + 3) + yCoord + (xCoord + 4) + yCoord;
 								}
 							curBoat ++;
 							G.addPlayerShip();
@@ -406,6 +408,8 @@ public class GUI extends JFrame implements ActionListener{
 									G.SetPlayerGridSpot(xCoord, yCoord + 1);
 									G.SetPlayerGridSpot(xCoord, yCoord + 2);
 									G.SetPlayerGridSpot(xCoord, yCoord + 3);
+									G.PlayerBoat4 = "" + xCoord + yCoord + xCoord + (yCoord + 1) + xCoord + (yCoord + 2) + xCoord + (yCoord + 3);
+									
 								}
 								if(!isHorizontal){
 									oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
@@ -421,6 +425,7 @@ public class GUI extends JFrame implements ActionListener{
 									G.SetPlayerGridSpot(xCoord + 1, yCoord);
 									G.SetPlayerGridSpot(xCoord + 2, yCoord);
 									G.SetPlayerGridSpot(xCoord + 3, yCoord);
+									G.PlayerBoat4 = "" + xCoord + yCoord + (xCoord + 1) + yCoord + (xCoord + 2) + yCoord + (xCoord + 3) + yCoord;
 								}
 							curBoat ++;
 							G.addPlayerShip();
@@ -449,6 +454,8 @@ public class GUI extends JFrame implements ActionListener{
 									G.SetPlayerGridSpot(xCoord, yCoord);
 									G.SetPlayerGridSpot(xCoord, yCoord + 1);
 									G.SetPlayerGridSpot(xCoord, yCoord + 2);
+									if(curBoat == 1){	G.PlayerBoat3a = "" + xCoord + yCoord + xCoord + (yCoord + 1) + xCoord + (yCoord + 2);	}
+									if(curBoat == 2){	G.PlayerBoat3b = "" + xCoord + yCoord + xCoord + (yCoord + 1) + xCoord + (yCoord + 2);	}
 								}
 								if(!isHorizontal){
 									oceanGrid[xCoord + 1][yCoord].setBackground(Color.BLUE);
@@ -460,6 +467,9 @@ public class GUI extends JFrame implements ActionListener{
 									G.SetPlayerGridSpot(xCoord, yCoord);
 									G.SetPlayerGridSpot(xCoord + 1, yCoord);
 									G.SetPlayerGridSpot(xCoord + 2, yCoord);
+									if(curBoat == 1){	G.PlayerBoat3a = "" + xCoord + yCoord + (xCoord + 1) + yCoord + (xCoord + 2) + yCoord;	}
+									if(curBoat == 2){	G.PlayerBoat3b = "" + xCoord + yCoord + (xCoord + 1) + yCoord + (xCoord + 2) + yCoord;	}
+
 								}
 							curBoat ++;
 							G.addPlayerShip();
@@ -484,6 +494,7 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord][yCoord + 1].setOpaque(true);
 									G.SetPlayerGridSpot(xCoord, yCoord);
 									G.SetPlayerGridSpot(xCoord, yCoord + 1);
+									G.PlayerBoat2 = "" + xCoord + yCoord + xCoord + (yCoord + 1);
 
 								}
 								if(!isHorizontal){
@@ -492,6 +503,7 @@ public class GUI extends JFrame implements ActionListener{
 									oceanGrid[xCoord + 1][yCoord].setOpaque(true);
 									G.SetPlayerGridSpot(xCoord, yCoord);
 									G.SetPlayerGridSpot(xCoord + 1, yCoord);
+									G.PlayerBoat2 = "" + xCoord + yCoord + (xCoord + 1) + yCoord;
 								}
 							curBoat ++;
 							G.addPlayerShip();

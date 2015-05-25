@@ -17,7 +17,16 @@ public class Data {
 	int [][] playerGrid = new int [10][10];
 	int curBoat = 0;
 	int curGameState = 0; //0 is placing boats, 1 is running, 2 is game over
-	
+	String PlayerBoat2 = "";
+	String PlayerBoat3a = "";
+	String PlayerBoat3b = "";
+	String PlayerBoat4 = "";
+	String PlayerBoat5 = "";
+	String CPUBoat2 = "";
+	String CPUBoat3a = "";
+	String CPUBoat3b = "";
+	String CPUBoat4 = "";
+	String CPUBoat5 = "";
 	
 	public Data(){
 		
@@ -127,14 +136,121 @@ public class Data {
 	}
 	
 	public int getEnemyShips(){
-		return numberOfCPUShipsLeft;
+		int i = 0;
+		boolean isSunk;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 4; x += 2){
+			if(CPUGrid[CPUBoat2.charAt(x)][CPUBoat2.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 6; x += 2){
+			if(CPUGrid[CPUBoat3a.charAt(x)][CPUBoat3a.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 6; x += 2){
+			if(CPUGrid[CPUBoat3b.charAt(x)][CPUBoat3b.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 8; x += 2){
+			if(CPUGrid[CPUBoat4.charAt(x)][CPUBoat4.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 10; x += 2){
+			if(CPUGrid[CPUBoat5.charAt(x)][CPUBoat5.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		numberOfCPUShipsLeft = i;
+		return i;
 	}
 	
+	
+
 	public int getPlayerShips(){
-		return numberOfPlayerShipsLeft;
+		int i = 0;
+		boolean isSunk;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 4; x += 2){
+			if(playerGrid[PlayerBoat2.charAt(x)][PlayerBoat2.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 6; x += 2){
+			if(playerGrid[PlayerBoat3a.charAt(x)][PlayerBoat3a.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 6; x += 2){
+			if(playerGrid[PlayerBoat3b.charAt(x)][PlayerBoat3b.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 8; x += 2){
+			if(playerGrid[PlayerBoat4.charAt(x)][PlayerBoat4.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		
+		isSunk = true;
+		for(int x = 0; x <= 10; x += 2){
+			if(playerGrid[PlayerBoat5.charAt(x)][PlayerBoat5.charAt(x++)] == 1){
+				isSunk = false;
+			}
+		}
+		if(isSunk == false)	i++;
+		
+		numberOfPlayerShipsLeft = i;
+		return i;
 	}
+	
+	
+	
+	
 	
 	public void updateStats(){
+		getPlayerShips();
+		getEnemyShips();
+		
 		if(curGameState == 1){
 		//this will update the stats
 			
@@ -204,12 +320,14 @@ public class Data {
 							CPUGrid[xCoord][yCoord + 2] = 1;
 							CPUGrid[xCoord][yCoord + 3] = 1;
 							CPUGrid[xCoord][yCoord + 4] = 1;
+							CPUBoat5 = "" + xCoord + yCoord + xCoord + (yCoord + 1) + xCoord + (yCoord + 2) + xCoord + (yCoord + 3) + xCoord + (yCoord + 4);
 						}
 						if(!isHorizontal){
 							CPUGrid[xCoord + 1][yCoord] = 1;
 							CPUGrid[xCoord + 2][yCoord] = 1;
 							CPUGrid[xCoord + 3][yCoord] = 1;
 							CPUGrid[xCoord + 4][yCoord] = 1;
+							CPUBoat5 = "" + xCoord + yCoord + (xCoord + 1) + yCoord + (xCoord + 2) + yCoord + (xCoord + 3) + yCoord + (xCoord + 4) + yCoord;
 						}
 					curBoat ++;
 					numberOfCPUShipsLeft ++;
@@ -234,11 +352,13 @@ public class Data {
 							CPUGrid[xCoord][yCoord + 1] = 1;
 							CPUGrid[xCoord][yCoord + 2] = 1;
 							CPUGrid[xCoord][yCoord + 3] = 1;
+							CPUBoat4 = "" + xCoord + yCoord + xCoord + (yCoord + 1) + xCoord + (yCoord + 2) + xCoord + (yCoord + 3);
 						}
 						if(!isHorizontal){
 							CPUGrid[xCoord + 1][yCoord] = 1;
 							CPUGrid[xCoord + 2][yCoord] = 1;
 							CPUGrid[xCoord + 3][yCoord] = 1;
+							CPUBoat4 = "" + xCoord + yCoord + (xCoord + 1) + yCoord + (xCoord + 2) + yCoord + (xCoord + 3) + yCoord;
 						}
 					curBoat ++;
 					numberOfCPUShipsLeft ++;
@@ -258,10 +378,14 @@ public class Data {
 						if(isHorizontal){
 							CPUGrid[xCoord][yCoord + 1] = 1;
 							CPUGrid[xCoord][yCoord + 2] = 1;
+							if(curBoat == 1){	CPUBoat3a = "" + xCoord + yCoord + xCoord + (yCoord + 1) + xCoord + (yCoord + 2);	}
+							if(curBoat == 2){	CPUBoat3b = "" + xCoord + yCoord + xCoord + (yCoord + 1) + xCoord + (yCoord + 2);	}
 						}
 						if(!isHorizontal){
 							CPUGrid[xCoord + 1][yCoord] = 1;
 							CPUGrid[xCoord + 2][yCoord] = 1;
+							if(curBoat == 1){	CPUBoat3a = "" + xCoord + yCoord + (xCoord + 1) + yCoord + (xCoord + 2) + yCoord;	}
+							if(curBoat == 2){	CPUBoat3b = "" + xCoord + yCoord + (xCoord + 1) + yCoord + (xCoord + 2) + yCoord;	}
 						}
 					curBoat ++;
 					numberOfCPUShipsLeft ++;
@@ -280,9 +404,11 @@ public class Data {
 					CPUGrid[xCoord][yCoord] = 1;
 						if(isHorizontal){
 							CPUGrid[xCoord][yCoord + 1] = 1;
+							CPUBoat2 = "" + xCoord + yCoord + xCoord + (yCoord + 1);
 						}
 						if(!isHorizontal){
 							CPUGrid[xCoord + 1][yCoord] = 1;
+							CPUBoat2 = "" + xCoord + yCoord + (xCoord + 1) + yCoord;
 						}
 					curBoat ++;
 					numberOfCPUShipsLeft ++;
