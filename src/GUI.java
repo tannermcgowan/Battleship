@@ -34,7 +34,7 @@ public class GUI extends JFrame implements ActionListener{
 	JButton FlipButton = new JButton("Placing: Horizontal");
 	JLabel bottomEast = new JLabel("                 ");
 	JLabel bottomWest = new JLabel("                 ");
-	JLabel bottomSouth = new JLabel("<html><p> <br><br> </p></html>");
+	JButton bottomSouth = new JButton("Reset");
 
 	
 	public GUI(){
@@ -94,6 +94,8 @@ public class GUI extends JFrame implements ActionListener{
 		}
 		
 		
+		bottomSouth.addActionListener(this);
+		bottomSouth.setActionCommand("New");
 		
 		bottomPanel.add(bottomNorth, BorderLayout.NORTH);
 		bottomPanel.add(bottomSouth, BorderLayout.SOUTH);
@@ -102,6 +104,8 @@ public class GUI extends JFrame implements ActionListener{
 		bottomPanel.add(oceanPanel, BorderLayout.CENTER);
 		
 		oceanPanel.setLayout(new GridLayout(10,10));
+	
+		
 		
 		x = 0;
 		y = 0;
@@ -274,6 +278,11 @@ public class GUI extends JFrame implements ActionListener{
 		repaint();
 		
 		System.out.println(e.getActionCommand());
+		
+		if(e.getActionCommand() == "New"){
+			//gui = new GUI();
+		}
+		
 		
 		if(G.getGameState() == 1){
 			if(G.getTurn()){
