@@ -132,6 +132,13 @@ public class Data {
 	
 
 	public int getAccuracy(){
+		System.out.println("Called GetAcurracy");
+		System.out.println("Hit = " + numberOfShotsThatHit);
+		System.out.println("Fired = " + numberOfShotsFired);
+		if(numberOfShotsFired > 0){
+			accuracy = 100 * (numberOfShotsThatHit / numberOfShotsFired);
+		}
+		
 		return accuracy;
 	}
 	

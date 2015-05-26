@@ -28,7 +28,7 @@ public class GUI extends JFrame implements ActionListener{
 	
 	JLabel topEast = new JLabel("                 ");
 	JLabel topWest = new JLabel("                 ");
-	JLabel topNorth = new JLabel("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: [Stat] &nbsp;&nbsp;&nbsp; Shots Fired: [Stat] <br> <br> </p></html>");
+	JLabel topNorth = new JLabel("");
 	JLabel topSouth = new JLabel(" ");
 	JPanel bottomNorth = new JPanel();
 	JButton FlipButton = new JButton("Placing: Horizontal");
@@ -42,7 +42,7 @@ public class GUI extends JFrame implements ActionListener{
 		super();
 		G = new Data();
 		topNorth.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
+		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
 		setSize(500,740);
 		setResizable(false);
@@ -269,7 +269,7 @@ public class GUI extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 
-		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
+		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
 		
 		repaint();
 		
@@ -527,7 +527,7 @@ public class GUI extends JFrame implements ActionListener{
 	}
 
 		//Update top scoreboard thing
-				topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
+				topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
 				repaint();
 				System.out.println("Enemy Ships Remaining: " + G.getEnemyShips() + "   Player Ships Remaining: " + G.getPlayerShips());
 		
