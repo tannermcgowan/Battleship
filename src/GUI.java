@@ -271,6 +271,8 @@ public class GUI extends JFrame implements ActionListener{
 
 		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
 		
+		repaint();
+		
 		System.out.println(e.getActionCommand());
 		
 		if(G.getGameState() == 1){
@@ -514,9 +516,6 @@ public class GUI extends JFrame implements ActionListener{
 				
 				
 				
-				
-				
-				
 			
 			}
 			
@@ -524,11 +523,14 @@ public class GUI extends JFrame implements ActionListener{
 
 		
 		
-		//Update top scoreboard thing
-		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
 		
 	}
 
+		//Update top scoreboard thing
+				topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Accuracy: " + G.getAccuracy() +"%" + "&nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
+				repaint();
+				System.out.println("Enemy Ships Remaining: " + G.getEnemyShips() + "   Player Ships Remaining: " + G.getPlayerShips());
+		
 	
 	}
 	

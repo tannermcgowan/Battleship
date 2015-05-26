@@ -11,8 +11,8 @@ public class Data {
 	int numberOfShotsFired = 0;
 	int numberOfShotsThatHit = 0;
 	int accuracy = 0;
-	int numberOfCPUShipsLeft = 0;
-	int numberOfPlayerShipsLeft = 0;
+	public int numberOfCPUShipsLeft = 0;
+	public int numberOfPlayerShipsLeft = 0;
 	int[][] CPUGrid = new int [10][10];
 	int [][] playerGrid = new int [10][10];
 	int curBoat = 0;
@@ -141,8 +141,18 @@ public class Data {
 		
 		
 		isSunk = true;
-		for(int x = 0; x <= 4; x += 2){
-			if(CPUGrid[CPUBoat2.charAt(x)][CPUBoat2.charAt(x++)] == 1){
+		for(int x = 0; x < 4; x += 2){
+			if(CPUGrid[Character.getNumericValue(CPUBoat2.charAt(x))][Character.getNumericValue(CPUBoat2.charAt(x + 1))] == 1){
+				isSunk = false;
+			}
+
+		}
+		if(isSunk == false)	i++;
+		
+		
+		isSunk = true;
+		for(int x = 0; x < 6; x += 2){
+			if(CPUGrid[Character.getNumericValue(CPUBoat3a.charAt(x))][Character.getNumericValue(CPUBoat3a.charAt(x + 1))] == 1){
 				isSunk = false;
 			}
 		}
@@ -150,8 +160,8 @@ public class Data {
 		
 		
 		isSunk = true;
-		for(int x = 0; x <= 6; x += 2){
-			if(CPUGrid[CPUBoat3a.charAt(x)][CPUBoat3a.charAt(x++)] == 1){
+		for(int x = 0; x < 6; x += 2){
+			if(CPUGrid[Character.getNumericValue(CPUBoat3b.charAt(x))][Character.getNumericValue(CPUBoat3b.charAt(x + 1))] == 1){
 				isSunk = false;
 			}
 		}
@@ -159,28 +169,22 @@ public class Data {
 		
 		
 		isSunk = true;
-		for(int x = 0; x <= 6; x += 2){
-			if(CPUGrid[CPUBoat3b.charAt(x)][CPUBoat3b.charAt(x++)] == 1){
+		for(int x = 0; x < 8; x += 2){
+			if(CPUGrid[Character.getNumericValue(CPUBoat4.charAt(x))][Character.getNumericValue(CPUBoat4.charAt(x + 1))] == 1){
 				isSunk = false;
 			}
 		}
 		if(isSunk == false)	i++;
 		
 		
-		isSunk = true;
-		for(int x = 0; x <= 8; x += 2){
-			if(CPUGrid[CPUBoat4.charAt(x)][CPUBoat4.charAt(x++)] == 1){
-				isSunk = false;
-			}
-		}
-		if(isSunk == false)	i++;
-		
+		System.out.println("starting cpu boat 5: " + CPUBoat5);
 		
 		isSunk = true;
-		for(int x = 0; x <= 10; x += 2){
-			if(CPUGrid[CPUBoat5.charAt(x)][CPUBoat5.charAt(x++)] == 1){
+		for(int x = 0; x < 10; x += 2){
+			if(CPUGrid[Character.getNumericValue(CPUBoat5.charAt(x))][Character.getNumericValue(CPUBoat5.charAt(x + 1))] == 1){
 				isSunk = false;
 			}
+			System.out.println(	"CPU Boat 5 " +	Character.getNumericValue(CPUBoat5.charAt(x)) + Character.getNumericValue(CPUBoat5.charAt(x + 1))	);
 		}
 		if(isSunk == false)	i++;
 		
@@ -191,56 +195,59 @@ public class Data {
 	
 
 	public int getPlayerShips(){
-		int i = 0;
-		boolean isSunk;
-		
-		
-		isSunk = true;
-		for(int x = 0; x <= 4; x += 2){
-			if(playerGrid[PlayerBoat2.charAt(x)][PlayerBoat2.charAt(x++)] == 1){
-				isSunk = false;
+		if(curGameState == 1){
+			int i = 0;
+			boolean isSunk;
+			
+			
+			isSunk = true;
+			for(int x = 0; x < 4; x += 2){
+				if(playerGrid[Character.getNumericValue(PlayerBoat2.charAt(x))][Character.getNumericValue(PlayerBoat2.charAt(x + 1))] == 1){
+					isSunk = false;
+				}
 			}
-		}
-		if(isSunk == false)	i++;
-		
-		
-		isSunk = true;
-		for(int x = 0; x <= 6; x += 2){
-			if(playerGrid[PlayerBoat3a.charAt(x)][PlayerBoat3a.charAt(x++)] == 1){
-				isSunk = false;
+			if(isSunk == false)	i++;
+			
+			
+			isSunk = true;
+			for(int x = 0; x < 6; x += 2){
+				if(playerGrid[Character.getNumericValue(PlayerBoat3a.charAt(x))][Character.getNumericValue(PlayerBoat3a.charAt(x + 1))] == 1){
+					isSunk = false;
+				}
 			}
-		}
-		if(isSunk == false)	i++;
-		
-		
-		isSunk = true;
-		for(int x = 0; x <= 6; x += 2){
-			if(playerGrid[PlayerBoat3b.charAt(x)][PlayerBoat3b.charAt(x++)] == 1){
-				isSunk = false;
+			if(isSunk == false)	i++;
+			
+			
+			isSunk = true;
+			for(int x = 0; x < 6; x += 2){
+				if(playerGrid[Character.getNumericValue(PlayerBoat3b.charAt(x))][Character.getNumericValue(PlayerBoat3b.charAt(x + 1))] == 1){
+					isSunk = false;
+				}
 			}
-		}
-		if(isSunk == false)	i++;
-		
-		
-		isSunk = true;
-		for(int x = 0; x <= 8; x += 2){
-			if(playerGrid[PlayerBoat4.charAt(x)][PlayerBoat4.charAt(x++)] == 1){
-				isSunk = false;
+			if(isSunk == false)	i++;
+			
+			
+			isSunk = true;
+			for(int x = 0; x < 8; x += 2){
+				if(playerGrid[Character.getNumericValue(PlayerBoat4.charAt(x))][Character.getNumericValue(PlayerBoat4.charAt(x + 1))] == 1){
+					isSunk = false;
+				}
 			}
-		}
-		if(isSunk == false)	i++;
-		
-		
-		isSunk = true;
-		for(int x = 0; x <= 10; x += 2){
-			if(playerGrid[PlayerBoat5.charAt(x)][PlayerBoat5.charAt(x++)] == 1){
-				isSunk = false;
+			if(isSunk == false)	i++;
+			
+			
+			isSunk = true;
+			for(int x = 0; x < 10; x += 2){
+				if(playerGrid[Character.getNumericValue(PlayerBoat5.charAt(x))][Character.getNumericValue(PlayerBoat5.charAt(x + 1))] == 1){
+					isSunk = false;
+				}
 			}
+			if(isSunk == false)	i++;
+			
+			numberOfPlayerShipsLeft = i;
+			return i;
 		}
-		if(isSunk == false)	i++;
-		
-		numberOfPlayerShipsLeft = i;
-		return i;
+		return numberOfPlayerShipsLeft;
 	}
 	
 	
@@ -269,35 +276,6 @@ public class Data {
 		numberOfShotsFired ++;
 	}
 	
-	
-	
-	public void CPUTakeHit(){
-		if(curGameState == 1){//this will be the method that scores the data when the CPU bopat takes a hit
-		numberOfShotsThatHit++;
-		updateStats();
-		}
-	}
-	
-	public void CPUGetSunk(){
-		if(curGameState == 1){//this is the method where the CPU gets a boat sunken
-		numberOfCPUShipsLeft--;
-		updateStats();
-		}
-	}
-	
-	public void playerGetSunk(){
-		if(curGameState == 1){
-		//this is the method where the player loses a ship, and the buttons all turn red
-		numberOfPlayerShipsLeft--;
-		updateStats();
-		}
-	}
-	
-	public void playerTakeHit(){
-		if(curGameState == 1){//this method is where the JButton that was hit turns red, and stores the data that it was hit
-		updateStats();
-		}
-	}
 	
 	
 	
