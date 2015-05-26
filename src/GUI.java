@@ -24,7 +24,7 @@ public class GUI extends JFrame implements ActionListener{
 	public int curBoat = 0;
 	public Data G;
 	String lastHit = "";
-
+	
 	
 	JLabel topEast = new JLabel("                 ");
 	JLabel topWest = new JLabel("                 ");
@@ -280,7 +280,7 @@ public class GUI extends JFrame implements ActionListener{
 		System.out.println(e.getActionCommand());
 		
 		if(e.getActionCommand() == "New"){
-			//gui = new GUI();
+			resetGame();
 		}
 		
 		
@@ -541,6 +541,13 @@ public class GUI extends JFrame implements ActionListener{
 				System.out.println("Enemy Ships Remaining: " + G.getEnemyShips() + "   Player Ships Remaining: " + G.getPlayerShips());
 		
 	
+	}
+	
+	
+	public void resetGame(){
+		
+		
+		
 	}
 	
 	
