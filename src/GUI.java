@@ -41,6 +41,7 @@ public class GUI extends JFrame implements ActionListener{
 		
 		super();
 		G = new Data();
+		G.curGameState = 0;
 		topNorth.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );   
@@ -280,7 +281,7 @@ public class GUI extends JFrame implements ActionListener{
 		System.out.println(e.getActionCommand());
 		
 		if(e.getActionCommand() == "New"){
-			resetGame();
+			//resetGame();
 		}
 		
 		
@@ -327,7 +328,7 @@ public class GUI extends JFrame implements ActionListener{
 			
 		}
 		else{ 
-			if(G.getGameState() == 0 && e.getActionCommand().toString().charAt(0) != 'r'){
+			if(G.getGameState() == 0 && (e.getActionCommand().toString().charAt(0) != 'r'	&&	e.getActionCommand().toString().charAt(0) != 'N')){
 		
 				
 				int xCoord = Integer.parseInt(e.getActionCommand().toString().charAt(0) + "");
@@ -539,12 +540,67 @@ public class GUI extends JFrame implements ActionListener{
 				topNorth.setText("<html><p> <br> &nbsp;&nbsp;&nbsp; Enemy Ships Remaining: " + G.getEnemyShips() + "&nbsp;&nbsp;&nbsp; Player Ships Remaining: " + G.getPlayerShips() + "<br> <br> </p></html>");
 				repaint();
 				System.out.println("Enemy Ships Remaining: " + G.getEnemyShips() + "   Player Ships Remaining: " + G.getPlayerShips());
-		
+				
+				if(G.checkForWin() == true){
+					G.curGameState = 2;
+					if(G.numberOfCPUShipsLeft == 0){
+						FlipButton.setText("YOU WON!");
+					}
+					if(G.numberOfPlayerShipsLeft == 0){
+						FlipButton.setText("YOU LOST!");
+					}
+				}
 	
 	}
 	
 	
 	public void resetGame(){
+		
+		System.out.println("Tried to Reset");
+		
+		oceanGrid = new JButton[10][10];
+		radarGrid = new JButton[10][10];
+		
+		int x = 0;
+		int y = 0;
+		JButton b;
+		
+		while( x < 10){
+			while(y < 10){
+				oceanGrid[x][y].setBackground(Color.GRAY);
+				oceanGrid[x][y].setForeground(Color.GRAY);
+				oceanGrid[x][y].setOpaque(true);
+				oceanGrid[x][y].setBorder(BorderFactory.createRaisedBevelBorder());
+				oceanGrid[x][y].addActionListener(this);
+				oceanGrid[x][y].setActionCommand("" + x + y);
+
+				y++;
+			}
+			x++;
+			y=0;
+		}
+		
+		x = 0;
+		y = 0;
+		
+		while( x < 10){
+			while(y < 10){
+				radarGrid[x][y].setBackground(Color.GRAY);
+				radarGrid[x][y].setForeground(Color.GRAY);
+				radarGrid[x][y].setOpaque(true);
+				radarGrid[x][y].setBorder(BorderFactory.createRaisedBevelBorder());
+				radarGrid[x][y].addActionListener(this);
+				radarGrid[x][y].setActionCommand("r" + x + y);
+				y++;
+			}
+			x++;
+			y=0;
+		}
+		
+		
+		G = new Data();
+		curBoat = 0;
+		isHorizontal = true;
 		
 		
 		

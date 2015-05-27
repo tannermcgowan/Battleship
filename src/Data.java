@@ -47,6 +47,13 @@ public class Data {
 		
 	}
 	
+	public boolean checkForWin(){
+		boolean b = false;
+		if(numberOfCPUShipsLeft == 0 || numberOfPlayerShipsLeft == 0)	b = true;
+		if(curGameState == 0)	b = false;
+		return b;
+	}
+	
 	public void SetPlayerGridSpot(int x, int y){
 		playerGrid[x][y] = 1;
 	}
