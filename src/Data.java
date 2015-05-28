@@ -1,12 +1,10 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class Data {
 	
-
 	boolean playerTurn = true; //If true, then it is the players turn, if false it is the CPU
 	int numberOfShotsFired = 0;
 	int numberOfShotsThatHit = 0;
@@ -29,18 +27,11 @@ public class Data {
 	String CPUBoat5 = "";
 	
 	public Data(){
-		
 		while(numberOfCPUShipsLeft < 5){
 			CPUPlaceShip();
 		}
-		
-		
 		playerTurn = true;
-		
-
-		
 	}
-	
 	
 	public boolean checkForWin(){
 		boolean b = false;
@@ -54,7 +45,6 @@ public class Data {
 	}
 	
 	public void flipPlayer(){
-		
 		if(playerTurn == true){
 			playerTurn = false;
 		}
@@ -72,14 +62,12 @@ public class Data {
 	}
 	
 	public void recieveCPUShot(int x, int y){
-		
 		if(playerGrid[x][y] == 0){ //Shot and miss
 			playerGrid[x][y] += 2;
 		}	
 		if(playerGrid[x][y] == 1){ //Shot and hit
 			playerGrid[x][y] += 2;
 		}
-			
 	}
 	
 	public void recievePlayerShot(int x, int y){
@@ -90,9 +78,7 @@ public class Data {
 		if(CPUGrid[x][y] == 1){ //Shot and hit
 			CPUGrid[x][y] += 2;
 		}
-			
 	}
-	
 	
 	public boolean getTurn(){
 		return playerTurn;
@@ -111,54 +97,39 @@ public class Data {
 	}
 	
 	public void debugBoard(){
-	
 		int x = 0;
 		int y = 0;
 		String curRow  = "";
 		
 		while( x < 10){
 			while(y < 10){
-				
 				curRow += (CPUGrid[x][y] + " | ");
-				
 				y++;
-
 			}
 			x++;
 			System.out.println(curRow);
 			curRow = "";
 			y=0;
 		}
-		
 	}
 	
-
 	public int getAccuracy(){
-		System.out.println("Called GetAcurracy");
-		System.out.println("Hit = " + numberOfShotsThatHit);
-		System.out.println("Fired = " + numberOfShotsFired);
 		if(numberOfShotsFired > 0){
 			accuracy = 100 * (numberOfShotsThatHit / numberOfShotsFired);
 		}
-		
 		return accuracy;
 	}
 	
 	public int getEnemyShips(){
 		int i = 0;
 		boolean isSunk;
-		
-		
 		isSunk = true;
 		for(int x = 0; x < 4; x += 2){
 			if(CPUGrid[Character.getNumericValue(CPUBoat2.charAt(x))][Character.getNumericValue(CPUBoat2.charAt(x + 1))] == 1){
 				isSunk = false;
 			}
-
 		}
 		if(isSunk == false)	i++;
-		
-		
 		isSunk = true;
 		for(int x = 0; x < 6; x += 2){
 			if(CPUGrid[Character.getNumericValue(CPUBoat3a.charAt(x))][Character.getNumericValue(CPUBoat3a.charAt(x + 1))] == 1){
@@ -166,8 +137,6 @@ public class Data {
 			}
 		}
 		if(isSunk == false)	i++;
-		
-		
 		isSunk = true;
 		for(int x = 0; x < 6; x += 2){
 			if(CPUGrid[Character.getNumericValue(CPUBoat3b.charAt(x))][Character.getNumericValue(CPUBoat3b.charAt(x + 1))] == 1){
@@ -175,8 +144,6 @@ public class Data {
 			}
 		}
 		if(isSunk == false)	i++;
-		
-		
 		isSunk = true;
 		for(int x = 0; x < 8; x += 2){
 			if(CPUGrid[Character.getNumericValue(CPUBoat4.charAt(x))][Character.getNumericValue(CPUBoat4.charAt(x + 1))] == 1){
@@ -184,31 +151,21 @@ public class Data {
 			}
 		}
 		if(isSunk == false)	i++;
-		
-		
-		System.out.println("starting cpu boat 5: " + CPUBoat5);
-		
 		isSunk = true;
 		for(int x = 0; x < 10; x += 2){
 			if(CPUGrid[Character.getNumericValue(CPUBoat5.charAt(x))][Character.getNumericValue(CPUBoat5.charAt(x + 1))] == 1){
 				isSunk = false;
 			}
-			System.out.println(	"CPU Boat 5 " +	Character.getNumericValue(CPUBoat5.charAt(x)) + Character.getNumericValue(CPUBoat5.charAt(x + 1))	);
 		}
 		if(isSunk == false)	i++;
-		
 		numberOfCPUShipsLeft = i;
 		return i;
 	}
 	
-	
-
 	public int getPlayerShips(){
 		if(curGameState == 1){
 			int i = 0;
 			boolean isSunk;
-			
-			
 			isSunk = true;
 			for(int x = 0; x < 4; x += 2){
 				if(playerGrid[Character.getNumericValue(PlayerBoat2.charAt(x))][Character.getNumericValue(PlayerBoat2.charAt(x + 1))] == 1){
@@ -216,8 +173,6 @@ public class Data {
 				}
 			}
 			if(isSunk == false)	i++;
-			
-			
 			isSunk = true;
 			for(int x = 0; x < 6; x += 2){
 				if(playerGrid[Character.getNumericValue(PlayerBoat3a.charAt(x))][Character.getNumericValue(PlayerBoat3a.charAt(x + 1))] == 1){
@@ -225,8 +180,6 @@ public class Data {
 				}
 			}
 			if(isSunk == false)	i++;
-			
-			
 			isSunk = true;
 			for(int x = 0; x < 6; x += 2){
 				if(playerGrid[Character.getNumericValue(PlayerBoat3b.charAt(x))][Character.getNumericValue(PlayerBoat3b.charAt(x + 1))] == 1){
@@ -234,8 +187,6 @@ public class Data {
 				}
 			}
 			if(isSunk == false)	i++;
-			
-			
 			isSunk = true;
 			for(int x = 0; x < 8; x += 2){
 				if(playerGrid[Character.getNumericValue(PlayerBoat4.charAt(x))][Character.getNumericValue(PlayerBoat4.charAt(x + 1))] == 1){
@@ -243,8 +194,6 @@ public class Data {
 				}
 			}
 			if(isSunk == false)	i++;
-			
-			
 			isSunk = true;
 			for(int x = 0; x < 10; x += 2){
 				if(playerGrid[Character.getNumericValue(PlayerBoat5.charAt(x))][Character.getNumericValue(PlayerBoat5.charAt(x + 1))] == 1){
@@ -252,50 +201,31 @@ public class Data {
 				}
 			}
 			if(isSunk == false)	i++;
-			
 			numberOfPlayerShipsLeft = i;
 			return i;
 		}
 		return numberOfPlayerShipsLeft;
 	}
 	
-	
-	
-	
-	
 	public void updateStats(){
 		getPlayerShips();
 		getEnemyShips();
-		
 		if(curGameState == 1){
-		//this will update the stats
-			
-		if(numberOfShotsFired > 0){
+			if(numberOfShotsFired > 0){
 			accuracy = numberOfShotsThatHit / numberOfShotsFired;
-		}
-	
+			}
 		}
 	}
-	
-	
-	
-	
 	
 	public void addPlayerShot(){
 		numberOfShotsFired ++;
 	}
 	
-	
-	
-	
-	
 	public void CPUPlaceShip() {
-		
 		int xCoord = (int)(Math.random()*10);
 		int yCoord = (int)(Math.random()*10);
 		boolean isHorizontal = true;
 		if(Math.random() > .5f) isHorizontal = false;
-		
 		/* -------------------- 5-Boat --------------------*/
 		if(curBoat == 4){ // 5-Boat
 			System.out.println(xCoord);
@@ -332,7 +262,6 @@ public class Data {
 				if(		(!(isHorizontal) && CPUGrid[xCoord][yCoord] != 1 && CPUGrid[xCoord + 1][yCoord] != 1 && CPUGrid[xCoord + 
 				   		  2][yCoord] != 1 && CPUGrid[xCoord + 3][yCoord] != 1)	||	((isHorizontal) && CPUGrid[xCoord][yCoord] != 1 &&
 				   		  CPUGrid[xCoord][yCoord + 1] != 1 
-				   		  
 				   		  && CPUGrid[xCoord][yCoord + 2] != 1 && CPUGrid[xCoord][yCoord + 3] != 1)){
 					CPUGrid[xCoord][yCoord] = 1;
 						if(isHorizontal){
@@ -403,11 +332,6 @@ public class Data {
 			}	
 		}
 		/* -------------------- ------ --------------------*/
-		
 	}
-
-	
-	
-	
 }
 
