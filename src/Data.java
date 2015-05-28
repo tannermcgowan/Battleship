@@ -42,11 +42,6 @@ public class Data {
 	}
 	
 	
-	public static void main(String[] args){
-		
-		
-	}
-	
 	public boolean checkForWin(){
 		boolean b = false;
 		if(numberOfCPUShipsLeft == 0 || numberOfPlayerShipsLeft == 0)	b = true;

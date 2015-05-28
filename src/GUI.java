@@ -136,6 +136,7 @@ public class GUI extends JFrame implements ActionListener{
 		//add(radarPanel);
 		add(bottomPanel);
 
+		setTitle("Hans and Tanner: BATTLESHIP");
 		
 		setVisible(true);
 
@@ -145,9 +146,9 @@ public class GUI extends JFrame implements ActionListener{
 	}
 	
 	
-	public static void main(String[] args){
-		GUI gui = new GUI();
-	}
+	//public static void main(String[] args){
+	//	GUI gui = new GUI();
+	//}
 	
 	
 	public void CPUFireMissile(){
