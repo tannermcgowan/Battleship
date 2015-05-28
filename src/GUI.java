@@ -281,7 +281,7 @@ public class GUI extends JFrame implements ActionListener{
 		System.out.println(e.getActionCommand());
 		
 		if(e.getActionCommand() == "New"){
-			//resetGame();
+			resetGame();
 		}
 		
 		
@@ -558,8 +558,7 @@ public class GUI extends JFrame implements ActionListener{
 		
 		System.out.println("Tried to Reset");
 		
-		oceanGrid = new JButton[10][10];
-		radarGrid = new JButton[10][10];
+		
 		
 		int x = 0;
 		int y = 0;
@@ -567,13 +566,9 @@ public class GUI extends JFrame implements ActionListener{
 		
 		while( x < 10){
 			while(y < 10){
-				oceanGrid[x][y].setBackground(Color.GRAY);
-				oceanGrid[x][y].setForeground(Color.GRAY);
+				oceanGrid[x][y].setBackground(new Color(238,238,238));
+				oceanGrid[x][y].setForeground(new Color(238,238,238));
 				oceanGrid[x][y].setOpaque(true);
-				oceanGrid[x][y].setBorder(BorderFactory.createRaisedBevelBorder());
-				oceanGrid[x][y].addActionListener(this);
-				oceanGrid[x][y].setActionCommand("" + x + y);
-
 				y++;
 			}
 			x++;
@@ -585,12 +580,9 @@ public class GUI extends JFrame implements ActionListener{
 		
 		while( x < 10){
 			while(y < 10){
-				radarGrid[x][y].setBackground(Color.GRAY);
-				radarGrid[x][y].setForeground(Color.GRAY);
+				radarGrid[x][y].setBackground(new Color(238,238,238));
+				radarGrid[x][y].setForeground(new Color(238,238,238));
 				radarGrid[x][y].setOpaque(true);
-				radarGrid[x][y].setBorder(BorderFactory.createRaisedBevelBorder());
-				radarGrid[x][y].addActionListener(this);
-				radarGrid[x][y].setActionCommand("r" + x + y);
 				y++;
 			}
 			x++;
@@ -601,8 +593,9 @@ public class GUI extends JFrame implements ActionListener{
 		G = new Data();
 		curBoat = 0;
 		isHorizontal = true;
-		
-		
+		FlipButton.setText("Placing: Horizontal");
+
+		repaint();
 		
 	}
 	
